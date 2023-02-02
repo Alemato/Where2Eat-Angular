@@ -1,3 +1,38 @@
+<div class="flex">
+  <mat-toolbar class="mat-toolbar" color="primary">
+    <button *ngIf="menu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="drawer.toggle(); show_hideMenu();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button *ngIf="!menu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="drawer.toggle(); show_hideMenu();">
+      <mat-icon>close</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <!--<span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>-->
+  </mat-toolbar>
+  <mat-drawer-container class="app-sidenav">
+    <mat-drawer #drawer class="col-2 py-3" mode="side">
+      <p class="px-3">Menù</p>
 
-<h1>{{ title }} app is running!</h1>
-<router-outlet></router-outlet>
+      <mat-nav-list>
+        <mat-list-item>
+          <a matLine>Link 1</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a matLine>Link 2</a>
+        </mat-list-item>
+      </mat-nav-list>
+
+    </mat-drawer>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
+</div>

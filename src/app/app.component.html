@@ -1,10 +1,10 @@
 <div class="flex">
   <mat-toolbar class="mat-toolbar" color="primary">
-    <button *ngIf="menu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+    <button *ngIf="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
             (click)="drawer.toggle(); show_hideMenu();">
       <mat-icon>menu</mat-icon>
     </button>
-    <button *ngIf="!menu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+    <button *ngIf="!menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
             (click)="drawer.toggle(); show_hideMenu();">
       <mat-icon>close</mat-icon>
     </button>
@@ -17,13 +17,19 @@
       <mat-icon>share</mat-icon>
     </button>-->
   </mat-toolbar>
+
   <mat-drawer-container class="app-sidenav">
-    <mat-drawer #drawer class="col-5 col-sm-5 col-md-2 py-3" mode="side">
+    <mat-drawer #drawer class="col-8 col-sm-5 col-md-2 py-3" mode="over">
       <p class="px-3">Menù</p>
 
       <mat-nav-list>
-        <mat-list-item>
-          <a matLine>Link 1</a>
+        <mat-list-item routerLink="/">
+          <mat-icon matListItemIcon>home</mat-icon>
+          <div matListItemTitle>Home</div>
+        </mat-list-item>
+        <mat-list-item [routerLink]="['/ristoranti', 1]" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'">
+          <mat-icon matListItemIcon>dashboard</mat-icon>
+          <div matListItemTitle>Dashboard</div>
         </mat-list-item>
         <mat-list-item>
           <a matLine>Link 2</a>
@@ -32,15 +38,17 @@
       </mat-nav-list>
       <p class="px-3 fs-5 mt-5">
         {{"LANGUAGE" | translate}}:
-      <mat-button-toggle-group name="lingua" aria-label="Font Style" (change)="changeLingua()" class="w-100 mt-2">
-        <mat-button-toggle value="it" [checked]="linguaScelta=='it'" class="col">{{"ITALIAN" | translate}}</mat-button-toggle>
-        <mat-button-toggle value="en" [checked]="linguaScelta=='en'" class="col">{{"ENGLISH" | translate}}</mat-button-toggle>
-      </mat-button-toggle-group>
+        <mat-button-toggle-group name="lingua" aria-label="Font Style" (change)="changeLingua()" class="w-100 mt-2">
+          <mat-button-toggle value="it" [checked]="linguaScelta=='it'"
+                             class="col">{{"ITALIAN" | translate}}</mat-button-toggle>
+          <mat-button-toggle value="en" [checked]="linguaScelta=='en'"
+                             class="col">{{"ENGLISH" | translate}}</mat-button-toggle>
+        </mat-button-toggle-group>
       </p>
     </mat-drawer>
     <div class="container-fluid">
-      <app-ristorante-card></app-ristorante-card>
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>
 </div>
+

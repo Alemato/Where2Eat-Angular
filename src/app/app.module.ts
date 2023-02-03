@@ -15,6 +15,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { RistoranteCardComponent } from './components/ristorante-card/ristorante-card.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatCardModule} from "@angular/material/card";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,8 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatLineModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonToggleModule
-
+    MatButtonToggleModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

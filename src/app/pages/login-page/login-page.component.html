@@ -1,0 +1,41 @@
+
+<mat-card class="m-0 my-3 col-12 col-md-5 mx-md-auto my-md-5">
+  <mat-card-content>
+    <form [formGroup]="loginFormModel" class="login-form p-3 p-md-5" (ngSubmit)="onLogin()">
+      <h2 class="text-center pb-4">Login</h2>
+      <mat-form-field class="mb-4">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput placeholder="Ex. pat@example.com" formControlName="username">
+        <mat-error
+          *ngIf="loginFormModel.get('username')?.hasError('required')"> {{validationMessages.username[0].message}}
+        </mat-error>
+        <mat-error
+          *ngIf="loginFormModel.get('username')?.hasError('minlength')"> {{validationMessages.username[1].message}}
+        </mat-error>
+        <mat-error
+          *ngIf="loginFormModel.get('username')?.hasError('pattern')"> {{validationMessages.username[2].message}}
+        </mat-error>
+        <mat-error
+          *ngIf="loginFormModel.get('username')?.hasError('incorrect')"> {{validationMessages.username[3].message}}
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="mb-4">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Password" formControlName="password">
+        <mat-error
+          *ngIf="loginFormModel.get('password')?.hasError('required')"> {{validationMessages.password[0].message}}
+        </mat-error>
+        <mat-error
+          *ngIf="loginFormModel.get('password')?.hasError('minlength')"> {{validationMessages.password[1].message}}
+        </mat-error>
+        <mat-error
+          *ngIf="loginFormModel.get('password')?.hasError('incorrect')"> {{validationMessages.password[2].message}}
+        </mat-error>
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">{{showPassword?'visibility_off':'visibility'}}</mat-icon>
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="primary" [disabled]="!loginFormModel.valid">{{"LOGIN_BUTTON" | translate}}</button>
+    </form>
+  </mat-card-content>
+</mat-card>

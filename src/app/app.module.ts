@@ -16,6 +16,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { RistoranteCardComponent } from './components/ristorante-card/ristorante-card.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatCardModule} from "@angular/material/card";
+import {httpInterceptorProviders} from "./interceptors";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatButtonToggleModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

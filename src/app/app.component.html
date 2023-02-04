@@ -1,11 +1,11 @@
-<div class="flex">
+<div class="flex" *ngIf="(logenIn$ | async)">
   <mat-toolbar class="mat-toolbar" color="primary">
-    <button *ngIf="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            (click)="drawer.toggle(); show_hideMenu();">
+    <button *ngIf="!drawer.opened" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="drawer.toggle();">
       <mat-icon>menu</mat-icon>
     </button>
-    <button *ngIf="!menu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            (click)="drawer.toggle(); show_hideMenu();">
+    <button *ngIf="drawer.opened" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="drawer.toggle();">
       <mat-icon>close</mat-icon>
     </button>
     <span>{{ title }}</span>
@@ -45,6 +45,9 @@
                              class="col">{{"ENGLISH" | translate}}</mat-button-toggle>
         </mat-button-toggle-group>
       </p>
+      <p class="px-3 fs-5 mt-5">
+        <button mat-raised-button type="button" color="primary" (click)="logout()">{{"SING_OUT" | translate}}</button>
+      </p>
     </mat-drawer>
     <div class="container-fluid">
       <router-outlet></router-outlet>
@@ -52,3 +55,6 @@
   </mat-drawer-container>
 </div>
 
+<div *ngIf="!(logenIn$ | async)">
+  <router-outlet></router-outlet>
+</div>

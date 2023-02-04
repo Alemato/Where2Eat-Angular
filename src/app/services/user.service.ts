@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {AUTH_TOKEN, URL, X_AUTH} from "../constants";
+import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from "../constants";
 import {BehaviorSubject, map, Observable} from "rxjs";
+import {User} from "../model/user";
 
 export interface Account {
   username: string;
@@ -15,6 +16,7 @@ export interface Account {
 export class UserService {
   private authToken: string = '';
   private loggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private user$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
   constructor(private http: HttpClient) {
     let token: string | null = localStorage.getItem(AUTH_TOKEN);
     if (token !== null && token !== undefined && token !== '') {
@@ -22,6 +24,12 @@ export class UserService {
       console.log('this.authToken');
       console.log(this.authToken);
       this.loggedIn$.next(true);
+    }
+    let utente: string | null = localStorage.getItem(UTENTE_STORAGE);
+    if (utente !== null && utente !== undefined && utente !== '') {
+      console.log('Utente');
+      console.log(utente);
+      this.user$.next(JSON.parse(utente));
     }
   }
 
@@ -32,6 +40,12 @@ export class UserService {
     return this.authToken;
   }
 
+  /**
+   * Funzione che restituisce il BehaviorSubject dell'oggetto dell'utenza
+   */
+  getUser(): BehaviorSubject<User> {
+    return this.user$;
+  }
 
   /**
    * Funzione che ritorna Observable della variabile loggedIn che serve per vedere se l'utenza è loggata o meno
@@ -56,6 +70,8 @@ export class UserService {
           localStorage.setItem(AUTH_TOKEN, token);
           this.authToken = token;
         }
+        localStorage.setItem(UTENTE_STORAGE, JSON.stringify(resp.body));
+        this.user$.next(resp.body);
         this.loggedIn$.next(true);
         console.log('setto loggedIn in loggedIn$');
         console.log(resp);
@@ -68,8 +84,10 @@ export class UserService {
    */
   logout() {
     localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(UTENTE_STORAGE);
     this.authToken = '';
     this.loggedIn$.next(false);
+    this.user$.next({} as User);
   }
 
   }

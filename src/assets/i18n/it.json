@@ -195,6 +195,7 @@
   "PASSWORD_REQUIRED_MESSAGE": "Password obbligatoria",
   "PASSWORD_MIN_LENGTH_MESSAGE": "La Password deve contenere almeno 4 caratteri",
   "PASSWORD_INVALID_MESSAGE": "La Password è invalida",
+  "CREDENZIALI_INVALID_MESSAGE": "Le tue credenziali non sono Valide",
   "NAME_REQUIRED_MESSAGE": "Nome obbligatorio",
   "SURNAME_REQUIRED_MESSAGE": "Cognome obbligatorio",
   "BIRTHDAY_REQUIRED_MESSAGE": "Data di nascita obbligatoria",

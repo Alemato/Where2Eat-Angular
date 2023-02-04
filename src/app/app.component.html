@@ -20,14 +20,22 @@
 
   <mat-drawer-container class="app-sidenav">
     <mat-drawer #drawer class="col-8 col-sm-5 col-md-2 py-3" mode="over">
-      <p class="px-3">Menù</p>
+      <div *ngIf="(user$|async) as user">
+        <div class="d-flex justify-content-center">
+          <span class="avatar avatar-64 avatar-md-96 bg-primary text-white rounded-circle">{{user.nome[0]}}</span>
+        </div>
+        <h2 class="text-center mt-2 text-capitalize">{{user.nome}} {{user.cognome}}</h2>
+        <mat-divider></mat-divider>
+      </div>
+      <p class="px-3 pt-3">Menù</p>
 
       <mat-nav-list>
         <mat-list-item routerLink="/">
           <mat-icon matListItemIcon>home</mat-icon>
           <div matListItemTitle>Home</div>
         </mat-list-item>
-        <mat-list-item [routerLink]="['/ristoranti', 1]" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'">
+        <mat-list-item [routerLink]="['/ristoranti', 1]" routerLinkActive="mdc-list-item--activated"
+                       [ariaCurrentWhenActive]="'page'">
           <mat-icon matListItemIcon>dashboard</mat-icon>
           <div matListItemTitle>Dashboard</div>
         </mat-list-item>
@@ -46,7 +54,10 @@
         </mat-button-toggle-group>
       </p>
       <p class="px-3 fs-5 mt-5">
-        <button mat-raised-button type="button" color="primary" (click)="logout()">{{"SING_OUT" | translate}}</button>
+        <button mat-raised-button type="button" color="primary" (click)="logout()"
+                class="w-100 fs-4">{{"SING_OUT" | translate}}
+          <mat-icon class="fs-5">logout</mat-icon>
+        </button>
       </p>
     </mat-drawer>
     <div class="container-fluid">

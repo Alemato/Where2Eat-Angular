@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {LinguaService} from "./services/lingua.service";
 import { UserService } from './services/user.service';
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import { Router } from '@angular/router';
+import {User} from "./model/user";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   title = 'Where2Eat';
   linguaScelta = 'it';
   logenIn$: Observable<boolean>;
+  user$: BehaviorSubject<User>;
 
   constructor(private translate: TranslateService,
               private linguaService: LinguaService,
@@ -21,6 +23,7 @@ export class AppComponent {
               private router: Router) {
     this.initTranslate();
     this.logenIn$ = userService.isLogged();
+    this.user$ = userService.getUser();
   }
 
   initTranslate() {

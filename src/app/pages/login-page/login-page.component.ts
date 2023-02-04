@@ -68,6 +68,10 @@ export class LoginPageComponent implements OnInit {
     this.translateService.get('PASSWORD_MIN_LENGTH_MESSAGE').subscribe((data) => {
       this.validationMessages.password[1].message = data;
     });
+    this.translateService.get('CREDENZIALI_INVALID_MESSAGE').subscribe((data) => {
+      this.validationMessages.username[3].message = data;
+      this.validationMessages.password[2].message = data;
+    });
   }
 
   public togglePasswordVisibility(): void {

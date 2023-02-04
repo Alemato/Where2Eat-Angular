@@ -195,6 +195,7 @@
   "PASSWORD_REQUIRED_MESSAGE": "Password is required",
   "PASSWORD_MIN_LENGTH_MESSAGE": "Passowrd must be at least 4 characters long",
   "PASSWORD_INVALID_MESSAGE": "Your Passoword is invalid",
+  "CREDENZIALI_INVALID_MESSAGE": "Your credentials are invalid",
   "NAME_REQUIRED_MESSAGE": "Name is required",
   "SURNAME_REQUIRED_MESSAGE": "Surname is required",
   "BIRTHDAY_REQUIRED_MESSAGE": "Birthday is required",

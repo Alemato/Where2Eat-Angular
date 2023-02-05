@@ -230,7 +230,8 @@
 
   "LESSON_CREATED": "Lesson created",
   "MESSAGE_PLANS_ADD": "The currently Lesson hasn't plans? Do you want to add some?",
-  "YES": "yes",
+  "YES": "Yes",
+  "NO": "No",
   "INSERT_NEW_SUBJECT": "Insert new Subject",
   "INSERT_NEW_SUB_SUBJECT": "Insert new Sub Subject",
 
@@ -248,5 +249,36 @@
   "YES_TEACHER": "I'm a TEACHER",
   "NOT_TEACHER": "I'm NOT a TEACHER",
 
-  "SET_LANGUAGE": "en-EN"
+  "SET_LANGUAGE": "en-EN",
+
+  "PROSSIME_PRENOTAZIONI": "Next Bookings",
+  "PASSATE_PRENOTAZIONI": "Past and cancelled bookings",
+  "PRENOTATA_STATE": "Booked",
+  "CONFERMATA_STATE": "Confirmed",
+  "RIFIUTATA_STATE": "Rejected",
+  "COMPLETATA_STATE": "Completed",
+  "ANNULLATA_STATE": "Cancelled",
+  "NESSUNA_PRENOTAZIONE": "You have no reservations",
+  "ANNULLA_PRENOTAZIONE": "Do you want to cancel your reservation?",
+
+  "PRENOTA_UNTAVOLO": "Book a table",
+  "NO_POSTI_MESSAGE": "Non ci sono posti disponibili!",
+  "NO_POSTI_MESSAGE_DUE": "There are no places available!",
+  "LABEL_DATA": "Choose date",
+  "LABEL_ORA": "Choose the time",
+  "LABEL_POSTI": "Number of seats",
+  "ERROR_MESSAGE_DATA": "The date is ",
+  "ERROR_MESSAGE_PASSATA": "past",
+  "ERROR_MESSAGE_ORA": "The time is ",
+  "ERROR_MESSAGE_RICHIESTA": "request",
+  "ERROR_MESSAGE_RICHIESTO": "request",
+  "ERROR_MESSAGE_VALORE": "The value entered ",
+  "ERROR_MESSAGE_NON_CORRETTO": "incorrectly",
+  "ERROR_MESSAGE_POSTI": "The number of places is ",
+  "CERCA": "Search:",
+  "DATA": "Date:",
+  "ORA": "Time:",
+  "POSTID": "Seats:",
+  "I_POSTI_SONO_DISPONIBILI": "Places are available",
+  "CONFERMA_PRENOTAZIONE": "Would you like to confirm your booking with the following information:"
 }

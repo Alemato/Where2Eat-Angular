@@ -8,7 +8,24 @@
             (click)="drawer.toggle();">
       <mat-icon>close</mat-icon>
     </button>
-    <span>{{ title }}</span>
+    <a [routerLink]="['/home']" class="text-white text-decoration-none" >{{ title }}</a>
+    <div class="row col-md-8 d-none d-md-flex">
+      <form [formGroup]="searchFormModel" class="" (ngSubmit)="search()">
+        <mat-form-field class="mt-4 ms-5 col-6">
+          <mat-label>Cosa</mat-label>
+          <input id="cosa" type="text" matInput placeholder="Ex. Nome ristorante, tipo di cucina..." formControlName="cosa">
+        </mat-form-field>
+
+        <mat-form-field class="mt-4 ms-3 me-3 col-6">
+          <mat-label>Dove</mat-label>
+          <input id="dove" type="text" matInput placeholder="Ex. L'Aquila, Roma..." formControlName="dove">
+        </mat-form-field>
+        <button  type="submit" class="btn btn-lg btn-light" style="margin-top: -15px;">{{"RICERCA_RISTORANTE" | translate}}</button>
+      </form>
+    </div>
+    <div class="ms-3 d-flex d-md-none">
+      <button mat-raised-button type="button" (click)="openDialogRicerca()">{{"RICERCA_RISTORANTE" | translate}}</button>
+    </div>
   </mat-toolbar>
 
   <mat-drawer-container class="app-sidenav">
@@ -27,18 +44,10 @@
           <mat-icon matListItemIcon>home</mat-icon>
           <div matListItemTitle>Home</div>
         </mat-list-item>
-        <mat-list-item [routerLink]="['/ristoranti', 2]" routerLinkActive="mdc-list-item--activated"
-                       [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
-          <mat-icon matListItemIcon>dashboard</mat-icon>
-          <div matListItemTitle>Dashboard</div>
-        </mat-list-item>
         <mat-list-item [routerLink]="['/prenotazioni']" routerLinkActive="mdc-list-item--activated"
                        [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>note_add</mat-icon>
           <div matListItemTitle>Prenotazioni</div>
-        </mat-list-item>
-        <mat-list-item>
-          <a matLine>Link 2</a>
         </mat-list-item>
 
       </mat-nav-list>

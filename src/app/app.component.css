@@ -2,3 +2,9 @@
 .mat-toolbar { flex: 0 0 auto; }
 .app-sidenav { flex: 1 1 0; }
 .mat-drawer-inner-container{ overflow: hidden !important; }
+mat-toolbar {
+  display:flex;
+  height: 5rem;
+  width: 100%;
+  background-color: lightgrey;
+}

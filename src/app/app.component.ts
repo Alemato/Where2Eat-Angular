@@ -5,6 +5,11 @@ import {UserService} from './services/user.service';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Router} from '@angular/router';
 import {User} from "./model/user";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  RicercaRistoranteModalComponent
+} from "./components/ricerca-ristorante-modal/ricerca-ristorante-modal.component";
 
 @Component({
   selector: 'app-root',
@@ -16,15 +21,23 @@ export class AppComponent {
   linguaScelta = 'it';
   logenIn$: Observable<boolean>;
   user$: BehaviorSubject<User>;
+  searchFormModel: FormGroup;
 
   constructor(private translate: TranslateService,
               private linguaService: LinguaService,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private formBuilder: FormBuilder,
+              private dialog: MatDialog) {
     this.initTranslate();
     this.logenIn$ = userService.isLogged();
     this.user$ = userService.getUser();
+    this.searchFormModel = this.formBuilder.group({
+      cosa: ['', []],
+      dove: ['', []]
+    });
   }
+
 
   initTranslate() {
     this.linguaScelta = this.linguaService.getLinguaAttuale()
@@ -51,4 +64,10 @@ export class AppComponent {
     this.userService.logout();
     this.router.navigate(['/login']);
   }
+
+  openDialogRicerca(): void {
+    this.dialog.open(RicercaRistoranteModalComponent);
+  }
+
+  search(){}
 }

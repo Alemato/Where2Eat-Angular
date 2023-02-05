@@ -9,6 +9,7 @@ import {RistoranteService} from "../../services/ristorante.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Recensione} from "../../model/recensione";
 import {ServiziMetodiPagamentoTipologiaCucina} from "../../model/servizi-metodi-pagamento-tipologia-cucina";
+import {URL_BASE_IMG} from "../../constants";
 
 @Component({
   selector: 'app-ristorante-page',
@@ -18,6 +19,7 @@ import {ServiziMetodiPagamentoTipologiaCucina} from "../../model/servizi-metodi-
 export class RistorantePageComponent implements OnInit {
   private idRistorante: number = -1;
   ristorante?: Ristorante;
+  URL_BASE_IMG = URL_BASE_IMG;
 
   constructor(private router: ActivatedRoute,
               private route: Router,

@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-pick-dim {
+  width: 210px;
+}
+
+@media screen and (max-width: 600px) {
+  .form-dim {
+    width: 300px;
+  }
+
+  .input-margin-sm {
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+  .input-margin {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}

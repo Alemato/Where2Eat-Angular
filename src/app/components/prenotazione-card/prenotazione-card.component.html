@@ -1,0 +1,144 @@
+<mat-card class="my-3" *ngIf="(prenotazione) as prenotazione">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title class="truncate-cell">{{ prenotazione.ristorante.ragioneSociale }}</mat-card-title>
+      <mat-card-subtitle class="py-1">
+        <div *ngIf="prenotazione?.statoPrenotazione == 0">
+          <span class="text-white bg-info bg-opacity-75 px-2 py-1 rounded small">
+            <svg class="me-1 mb-1" fill="#ffffff" width="14px"
+                 height="14px"
+                 viewBox="0 0 16 16"
+                 xmlns="http://www.w3.org/2000/svg"
+                 stroke="#ffffff"><g id="SVGRepo_bgCarrier"
+                                     stroke-width="0"></g><g
+              id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path
+              fill-rule="evenodd"
+              d="m15.12 2.23-9.79 9.78L.88 7.56 0 8.44l5.33 5.34L16 3.11l-.88-.88z"></path></g>
+            </svg>
+            Prenptata</span>
+        </div>
+        <div *ngIf="prenotazione?.statoPrenotazione == 1">
+          <span class="text-white bg-success bg-opacity-75 px-2 py-1 rounded small">
+            <svg class="me-1 mb-1" fill="#ffffff" width="14px"
+                 height="14px"
+                 viewBox="0 0 16 16"
+                 xmlns="http://www.w3.org/2000/svg"
+                 stroke="#ffffff"><g id="SVGRepo_bgCarrier"
+                                     stroke-width="0"></g><g
+              id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path
+              fill-rule="evenodd"
+              d="m15.12 2.23-9.79 9.78L.88 7.56 0 8.44l5.33 5.34L16 3.11l-.88-.88z"></path></g>
+            </svg>
+            Accettata</span>
+        </div>
+        <div *ngIf="prenotazione?.statoPrenotazione === 2">
+          <span class="text-white bg-danger bg-opacity-75 px-2 py-1 rounded small">
+            <svg fill="#ffffff" width="18px"
+                 height="18px"
+                 viewBox="0 0 24 24" id="cross"
+                 data-name="Flat Line"
+                 xmlns="http://www.w3.org/2000/svg"
+                 class="mb-1 " stroke="#ffffff"><g
+              id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                             stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path
+              id="primary" d="M19,19,5,5M19,5,5,19"
+              style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width:2.4;"></path></g>
+          </svg>
+            Annullata</span>
+        </div>
+
+        <div *ngIf="prenotazione?.statoPrenotazione == 3">
+          <span class="text-white bg-danger bg-opacity-75 px-2 py-1 rounded small">
+            <svg fill="#ffffff" width="18px" height="18px"
+                 viewBox="0 0 24 24" id="cross"
+                 data-name="Flat Line"
+                 xmlns="http://www.w3.org/2000/svg"
+                 class="mb-1 " stroke="#ffffff"><g
+              id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                             stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path
+              id="primary" d="M19,19,5,5M19,5,5,19"
+              style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width:2.4;"></path></g>
+          </svg>
+            Rifiutata</span>
+        </div>
+        <div *ngIf="prenotazione?.statoPrenotazione == 4">
+          <span class="text-white bg-success bg-opacity-75 px-2 py-1 rounded small">
+            <svg class="me-1 mb-1" fill="#ffffff" width="14px"
+                 height="14px"
+                 viewBox="0 0 16 16"
+                 xmlns="http://www.w3.org/2000/svg"
+                 stroke="#ffffff"><g id="SVGRepo_bgCarrier"
+                                     stroke-width="0"></g><g
+              id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path
+              fill-rule="evenodd"
+              d="m15.12 2.23-9.79 9.78L.88 7.56 0 8.44l5.33 5.34L16 3.11l-.88-.88z"></path></g>
+            </svg>
+            Completata</span>
+        </div>
+      </mat-card-subtitle>
+      <mat-card-subtitle>Roma</mat-card-subtitle>
+      <img alt="" class="rounded" mat-card-sm-image
+           src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg">
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="d-flex px-4 py-1 my-2 justify-content-between border bg-light rounded">
+      <span>
+        <svg class="mb-1" fill="#000000" width="16px" height="16px" viewBox="-1.6 -1.6 19.20 19.20"
+             xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+          id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path
+          d="M14.25 2.5h-.75v-1h-1.25v1h-8.5v-1H2.5v1h-.75A1.25 1.25 0 0 0 .5 3.75v9.5a1.25 1.25 0 0 0 1.25 1.25h12.5a1.25 1.25 0 0 0 1.25-1.25v-9.5a1.25 1.25 0 0 0-1.25-1.25zM1.75 3.75h12.5V5H1.75V3.75zm0 9.5v-7h12.5v7z"></path><path
+          d="M3 8h1.1v1.2H3zm0 2.4h1.1v1.2H3zM11.8 8h1.1v1.2h-1.1zm0 2.4h1.1v1.2h-1.1zM9.6 8h1.1v1.2H9.6zm0 2.4h1.1v1.2H9.6zM7.4 8h1.1v1.2H7.4zm0 2.4h1.1v1.2H7.4zM5.2 8h1.1v1.2H5.2zm0 2.4h1.1v1.2H5.2z"></path></g>
+        </svg>
+        <!--        {{ prenotazione?.data | date: "dd/MM/yyyy" }}-->
+        {{ prenotazione?.data }}
+      </span>
+      <span>-</span>
+      <span>
+        <svg class="mb-1" width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                            stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path
+          d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z"
+          stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path
+          d="M15.71 15.18L12.61 13.33C12.07 13.01 11.63 12.24 11.63 11.61V7.51001" stroke="#292D32" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"></path> </g>
+        </svg>
+        <!--        {{ prenotazione?.ora | date: "hh:mm" }}-->
+        {{ prenotazione?.ora }}
+      </span>
+      <span>-</span>
+      <span>
+        <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                            stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path
+          opacity="0.4"
+          d="M17.9981 7.16C17.9381 7.15 17.8681 7.15 17.8081 7.16C16.4281 7.11 15.3281 5.98 15.3281 4.58C15.3281 3.15 16.4781 2 17.9081 2C19.3381 2 20.4881 3.16 20.4881 4.58C20.4781 5.98 19.3781 7.11 17.9981 7.16Z"
+          stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="0.4"
+                                                                                                           d="M16.9675 14.4402C18.3375 14.6702 19.8475 14.4302 20.9075 13.7202C22.3175 12.7802 22.3175 11.2402 20.9075 10.3002C19.8375 9.59016 18.3075 9.35016 16.9375 9.59016"
+                                                                                                           stroke="#292D32"
+                                                                                                           stroke-width="1.5"
+                                                                                                           stroke-linecap="round"
+                                                                                                           stroke-linejoin="round"></path> <path
+          opacity="0.4"
+          d="M5.96656 7.16C6.02656 7.15 6.09656 7.15 6.15656 7.16C7.53656 7.11 8.63656 5.98 8.63656 4.58C8.63656 3.15 7.48656 2 6.05656 2C4.62656 2 3.47656 3.16 3.47656 4.58C3.48656 5.98 4.58656 7.11 5.96656 7.16Z"
+          stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="0.4"
+                                                                                                           d="M6.9975 14.4402C5.6275 14.6702 4.1175 14.4302 3.0575 13.7202C1.6475 12.7802 1.6475 11.2402 3.0575 10.3002C4.1275 9.59016 5.6575 9.35016 7.0275 9.59016"
+                                                                                                           stroke="#292D32"
+                                                                                                           stroke-width="1.5"
+                                                                                                           stroke-linecap="round"
+                                                                                                           stroke-linejoin="round"></path> <path
+          d="M12.0001 14.6302C11.9401 14.6202 11.8701 14.6202 11.8101 14.6302C10.4301 14.5802 9.33008 13.4502 9.33008 12.0502C9.33008 10.6202 10.4801 9.47021 11.9101 9.47021C13.3401 9.47021 14.4901 10.6302 14.4901 12.0502C14.4801 13.4502 13.3801 14.5902 12.0001 14.6302Z"
+          stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path
+          d="M9.0907 17.7804C7.6807 18.7204 7.6807 20.2603 9.0907 21.2003C10.6907 22.2703 13.3107 22.2703 14.9107 21.2003C16.3207 20.2603 16.3207 18.7204 14.9107 17.7804C13.3207 16.7204 10.6907 16.7204 9.0907 17.7804Z"
+          stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g>
+        </svg>
+        {{ prenotazione?.numeroPosti }}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="prenotazione?.statoPrenotazione === 0 || prenotazione?.statoPrenotazione === 1"
+                    class="d-flex justify-content-center mx-2 pt-2">
+    <button mat-raised-button color="warn" class="w-100"
+            (click)="openDialogCancell('300ms', '300ms')">Annulla
+    </button>
+  </mat-card-actions>
+</mat-card>

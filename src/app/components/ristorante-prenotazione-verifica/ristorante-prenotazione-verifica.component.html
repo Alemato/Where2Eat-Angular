@@ -1,0 +1,77 @@
+<form [formGroup]="verificaForm" (ngSubmit)="cercaPrenotazione()" class="form-dim">
+  <h1 mat-dialog-title>Prenota un tavolo</h1>
+  <div class="d-flex justify-content-center text-danger fw-bold pb-0" *ngIf="errorePrenotazione">
+    <span>Non ci sono posti disponibili!</span>
+  </div>
+  <div class="d-flex justify-content-center text-danger fw-bold pb-3" *ngIf="errorePrenotazione">
+    <span>Per favore scegline un'altra data</span>
+  </div>
+
+  <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
+    <mat-label>Scegli la data</mat-label>
+    <input matInput [matDatepicker]="picker" id="dataPrenotazione" formControlName="dataPrenotazione">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="verificaForm && verificaForm.get('dataPrenotazione')?.hasError('required')">
+      La data è <strong>richiesta</strong>
+    </mat-error>
+    <mat-error *ngIf="verificaForm?.get('dataPrenotazione')?.hasError('dateError')">
+      La data è <strong>passata</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
+    <mat-label>Scegli l'ora</mat-label>
+    <mat-select id="oraPrenotazione" formControlName="oraPrenotazione">
+      <mat-option value="12:00">12:00</mat-option>
+      <mat-option value="12:15">12:15</mat-option>
+      <mat-option value="12:30">12:30</mat-option>
+      <mat-option value="12:45">12:45</mat-option>
+      <mat-option value="13:00">13:00</mat-option>
+      <mat-option value="13:15">13:15</mat-option>
+      <mat-option value="13:30">13:30</mat-option>
+      <mat-option value="13:45">13:45</mat-option>
+      <mat-option value="14:00">14:00</mat-option>
+      <mat-option value="14:15">14:15</mat-option>
+      <mat-option value="14:30">14:30</mat-option>
+      <mat-option value="14:45">14:45</mat-option>
+      <mat-option value="15:00">15:00</mat-option>
+      <mat-option value="15:15">15:15</mat-option>
+      <mat-option value="15:30">15:30</mat-option>
+      <mat-option value="15:45">15:45</mat-option>
+      <mat-option value="16:00">16:00</mat-option>
+      <mat-option value="19:00">19:00</mat-option>
+      <mat-option value="19:15">19:15</mat-option>
+      <mat-option value="19:30">19:30</mat-option>
+      <mat-option value="19:45">19:45</mat-option>
+      <mat-option value="20:00">20:00</mat-option>
+      <mat-option value="20:15">20:15</mat-option>
+      <mat-option value="20:30">20:30</mat-option>
+      <mat-option value="20:45">20:45</mat-option>
+      <mat-option value="21:00">21:00</mat-option>
+      <mat-option value="21:15">21:15</mat-option>
+      <mat-option value="21:30">21:30</mat-option>
+      <mat-option value="21:45">21:45</mat-option>
+      <mat-option value="22:15">22:00</mat-option>
+    </mat-select>
+    <mat-error *ngIf="verificaForm?.get('oraPrenotazione')?.hasError('required')">
+      L'ora è <strong>richiesta</strong>
+    </mat-error>
+    <mat-error *ngIf="verificaForm?.get('oraPrenotazione')?.hasError('pattern')">
+      Valore inserito <strong>non corretto</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
+    <mat-label>Numero posti</mat-label>
+    <input type="number" matInput id="postiPrenotazione" formControlName="postiPrenotazione">
+    <mat-error *ngIf="verificaForm?.get('postiPrenotazione')?.hasError('required')">
+      Il numero dei posti è <strong>richiesto</strong>
+    </mat-error>
+    <mat-error *ngIf="verificaForm?.get('postiPrenotazione')?.hasError('pattern')">
+      Valore inserito <strong>non corretto</strong>
+    </mat-error>
+  </mat-form-field>
+  <div class="d-flex justify-content-center py-3">
+    <button mat-raised-button type="submit" class="w-75" [disabled]="!verificaForm.valid" color="primary">Cerca</button>
+  </div>
+
+</form>

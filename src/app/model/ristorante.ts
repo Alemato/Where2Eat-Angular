@@ -19,5 +19,4 @@ export interface Ristorante {
   metodiPagamento: Array<ServiziMetodiPagamentoTipologiaCucina>;
   tipologiaCucina: Array<ServiziMetodiPagamentoTipologiaCucina>;
   recensioni: Array<Recensione>;
-
 }

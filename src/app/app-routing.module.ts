@@ -16,6 +16,9 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule)
+  },
+  { path: 'prenotazioni',
+    loadChildren: () => import('./pages/prenotazioni-page/prenotazioni-page.module').then(m => m.PrenotazioniPageModule)
   }
 
 ];

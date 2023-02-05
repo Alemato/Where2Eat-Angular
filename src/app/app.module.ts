@@ -48,9 +48,12 @@ export function createTranslateLoader(http: HttpClient) {
     MatToolbarModule,
     MatIconModule,
     MatButtonToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonToggleModule,
+    MatIconModule
   ],
   providers: [httpInterceptorProviders],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

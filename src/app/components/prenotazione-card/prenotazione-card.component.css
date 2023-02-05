@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px) {
+  .truncate-cell {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img{
+    height:80px;
+    width:80px;
+  }
+}

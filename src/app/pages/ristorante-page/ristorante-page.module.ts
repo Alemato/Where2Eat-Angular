@@ -8,6 +8,15 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { RistorantePrenotazioneVerificaComponent } from '../../components/ristorante-prenotazione-verifica/ristorante-prenotazione-verifica.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {ReactiveFormsModule} from "@angular/forms";
+import { RistorantePrenotazionePrenotaComponent } from '../../components/ristorante-prenotazione-prenota/ristorante-prenotazione-prenota.component';
 
 const routes: Routes = [
   {
@@ -18,7 +27,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    RistorantePageComponent
+    RistorantePageComponent,
+    RistorantePrenotazioneVerificaComponent,
+    RistorantePrenotazionePrenotaComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +38,17 @@ const routes: Routes = [
     MatDividerModule,
     MatListModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'it-IT'},
   ]
 })
 export class RistorantePageModule { }

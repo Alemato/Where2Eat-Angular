@@ -9,13 +9,6 @@
       <mat-icon>close</mat-icon>
     </button>
     <span>{{ title }}</span>
-    <!--<span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>-->
   </mat-toolbar>
 
   <mat-drawer-container class="app-sidenav">
@@ -30,7 +23,7 @@
       <p class="px-3 pt-3">Menù</p>
 
       <mat-nav-list>
-        <mat-list-item routerLink="/" (click)="drawer.toggle();">
+        <mat-list-item routerLink="/home" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>home</mat-icon>
           <div matListItemTitle>Home</div>
         </mat-list-item>
@@ -65,7 +58,7 @@
         </button>
       </p>
     </mat-drawer>
-    <div class="container-fluid">
+    <div class="container-fluid col-12 col-md-6">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>

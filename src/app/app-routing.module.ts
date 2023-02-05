@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/ristoranti/1',
+    redirectTo: '/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'ristoranti/:id',

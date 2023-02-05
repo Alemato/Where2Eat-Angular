@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
@@ -13,10 +13,9 @@ import {MatListModule} from "@angular/material/list";
 import {MatLineModule} from "@angular/material/core";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import { RistoranteCardComponent } from './components/ristorante-card/ristorante-card.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {MatCardModule} from "@angular/material/card";
 import {httpInterceptorProviders} from "./interceptors";
+import {MatDividerModule} from "@angular/material/divider";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,8 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RistoranteCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -41,19 +39,16 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    MatSidenavModule,
+    MatToolbarModule,
     MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatDividerModule,
     MatListModule,
     MatLineModule,
-    MatToolbarModule,
-    MatIconModule,
     MatButtonToggleModule,
-    MatCardModule,
-    MatButtonToggleModule,
-    MatIconModule
   ],
   providers: [httpInterceptorProviders],
-  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

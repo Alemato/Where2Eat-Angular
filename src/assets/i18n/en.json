@@ -16,6 +16,11 @@
   "ITALIAN": "Italian",
   "ENGLISH": "English",
 
+  "COSTO_MEDIO_PIATTI": "Average cost of dishes is",
+  "DETTAGLI_RISTORANTE": "Restaurant details",
+  "PIU_SCELTI_IN_ITALIA": "Most chosen in italy",
+  "RISTORANTI_PIU_RICHIESTI": "Most Popular Restaurants",
+
   "BUTTON_TAB_ACCEPTED": "Accepted",
   "BUTTON_TAB_REQUESTS": "Requests",
   "BUTTON_TAB_LESSONS": "Lessons",

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {LinguaService} from "./services/lingua.service";
-import { UserService } from './services/user.service';
+import {UserService} from './services/user.service';
 import {BehaviorSubject, Observable} from "rxjs";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {User} from "./model/user";
 
 @Component({
@@ -31,9 +31,9 @@ export class AppComponent {
     this.translate.setDefaultLang(this.linguaScelta);
   }
 
-  changeLingua(){
+  changeLingua() {
     console.log("Cambio")
-    if(this.linguaScelta === 'it') {
+    if (this.linguaScelta === 'it') {
       this.linguaService.updateLingua('en');
       this.linguaScelta = 'en'
     } else {
@@ -43,7 +43,11 @@ export class AppComponent {
     this.translate.setDefaultLang(this.linguaScelta);
   }
 
-  logout(){
+  setContainerCondition(): boolean {
+    return !(this.router.url.indexOf("/ristoranti/") > -1);
+  }
+
+  logout() {
     this.userService.logout();
     this.router.navigate(['/login']);
   }

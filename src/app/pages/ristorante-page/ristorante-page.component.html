@@ -1,38 +1,42 @@
-<div class="content">
+<div class="content" *ngIf="ristorante as ristorante">
   <div class="container-fluid">
     <img class="img-fluid col-12 col-md-4 d-block mx-auto"
          src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg">
     <mat-divider></mat-divider>
     <div class="row justify-content-between py-0 py-md-3">
-      <h1 class="col-auto mt-3 ps-3 mb-2" style="font-weight: 500!important;">Ristorante 1</h1>
+      <h1 class="col-auto mt-3 ps-3 mb-2" style="font-weight: 500!important;">{{ristorante.ragioneSociale}}</h1>
       <button mat-flat-button color="primary" (click)="openDialogVerificaPrenotazione()"
-              class="m-3 col-auto col-md-6 fs-4 p-4 text-uppercase my-0 d-none d-md-flex">Prenota
-        Ristorante
+              class="m-3 col-auto col-md-6 fs-4 p-4 text-uppercase my-0 d-none d-md-flex">{{"PRENOTA_RISTORANTE"| translate}}
       </button>
     </div>
     <div class="my-3 mt-md-0">
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel expanded="true" #acc1>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h2 class="col-auto mt-3 mb-3">Dettagli ristorante</h2>
+              <h2 class="col-auto mt-3 mb-3">{{"DETTAGLI_RISTORANTE" | translate}}</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="row ">
+          <div class="row " (click)="acc1.toggle()">
             <div class="col-12 col-md-4 mb-3">
-              <p><span class="text-muted me-2">Località: </span> L'Aquila</p>
-              <p><span class="text-muted me-2">Indirizzo: </span> Via Roma 1</p>
-              <p><span class="text-muted me-2">Tipologie di cucina: </span> Tipo 1 / Tipo 2 / Tipo 3 / Tipo 4</p>
+              <p><span class="text-muted me-2">{{"LOCALITA" | translate}}: </span> {{ristorante.localita}}</p>
+              <p><span class="text-muted me-2">{{"INDIRIZZO" | translate}}: </span> {{ristorante.indirizzo}}</p>
+              <p><span class="text-muted me-2">{{"TIPOLOGIE_DI_CUCINA"| translate}}: </span> <span
+                *ngFor="let tipo of ristorante.tipologiaCucina; last as isLast;">{{tipo.nome}} {{!isLast ? '/ ' : ''}}</span>
+              </p>
             </div>
             <div class="col-12 col-md-4 mb-3">
-              <p><span class="text-muted me-2">Numero di posti: </span> 50</p>
-              <p><span class="text-muted me-2">Email: </span> ristorante@ristorante</p>
-              <p><span class="text-muted me-2">Telefono: </span> 1234567</p>
+              <p><span class="text-muted me-2">{{"LABEL_POSTI" | translate}}: </span> {{ristorante.capienzaMassima}}</p>
+              <p><span class="text-muted me-2">{{"EMAIL" | translate}}: </span> {{ristorante.emailAziendale}}</p>
+              <p><span class="text-muted me-2">{{"NUMERO_DI_TELEFONO" | translate}}
+                : </span> {{ristorante.telefonoAziendale}}</p>
             </div>
             <div class="col-12 col-md-4 mb-3">
-              <p><span class="text-muted me-2">Metodi di pagamento: </span> BACOMAT / VISA / MASTERCARD</p>
-              <p><span class="text-muted me-2">Voto Medio: </span> 4.5</p>
-              <p><span class="text-muted me-2">Numero di Piatti: </span> 4</p>
+              <p><span class="text-muted me-2">{{"METODI_DI_PAGAMENTO" | translate}}: </span> <span
+                *ngFor="let metodo of ristorante.metodiPagamento; last as isLast;">{{metodo.nome}} {{!isLast ? '/ ' : ''}}</span>
+              </p>
+              <p><span class="text-muted me-2">{{"VOTO" | translate}}: </span> <span>{{"NUMERO_DI_RECENSIONI" | translate}} {{ristorante.recensioni.length}}
+                {{"CON_MEDIA" | translate}}</span> {{getAverage(ristorante.recensioni)}}</p>
             </div>
           </div>
         </mat-expansion-panel>
@@ -43,24 +47,13 @@
 
     <div class="my-3">
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel expanded="true" #acc2>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h2 class="col-auto mt-3 mb-3">Descrizione ristorante</h2>
+              <h2 class="col-auto mt-3 mb-3">{{"DESCRIZIONE_RISTORANTE" | translate}}</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <p class="mb-3">Una lunga descrizione di quanto sia spettacolare questo ristorante. Questo ristorante è
-            spettacolare
-            fa tante cose.inclusa questa: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem
-            Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-            type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus
-            PageMaker including versions of Lorem Ipsum.</p>
+          <p class="mb-3" (click)="acc2.toggle()">{{ristorante.descrizione}}</p>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -70,74 +63,43 @@
 
     <div class="my-3">
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel expanded="true" #acc3>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h2 class="col-auto mt-3 mb-3">Servizi Offerti</h2>
+              <h2 class="col-auto mt-3 mb-3">{{"SERVIZI_OFFERTI" | translate}}</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="row mb-3">
-            <div class="col-12 col-md-3">
+          <div class="row mb-3" (click)="acc3.toggle()"
+               *ngIf="splitServiziQuattroColonne(ristorante.servizi) as quattroColonne">
+            <div class="col-12 col-md-3" *ngIf="quattroColonne[0] as servizi">
               <mat-list class="pt-0">
-                <mat-list-item>
+                <mat-list-item *ngFor="let s of servizi">
                   <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 1</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 2</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 3</div>
+                  <div matListItemTitle>{{s.nome}}</div>
                 </mat-list-item>
               </mat-list>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3" *ngIf="quattroColonne[1] as servizi">
               <mat-list class="pt-0">
-                <mat-list-item>
+                <mat-list-item *ngFor="let s of servizi">
                   <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 1</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 2</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 3</div>
+                  <div matListItemTitle>{{s.nome}}</div>
                 </mat-list-item>
               </mat-list>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3" *ngIf="quattroColonne[2] as servizi">
               <mat-list class="pt-0">
-                <mat-list-item>
+                <mat-list-item *ngFor="let s of servizi">
                   <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 1</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 2</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 3</div>
+                  <div matListItemTitle>{{s.nome}}</div>
                 </mat-list-item>
               </mat-list>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3" *ngIf="quattroColonne[3] as servizi">
               <mat-list class="pt-0">
-                <mat-list-item>
+                <mat-list-item *ngFor="let s of servizi">
                   <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 1</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 2</div>
-                </mat-list-item>
-                <mat-list-item>
-                  <mat-icon matListItemIcon>done</mat-icon>
-                  <div matListItemTitle>Servizio 3</div>
+                  <div matListItemTitle>{{s.nome}}</div>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -155,8 +117,7 @@
   <mat-divider></mat-divider>
 
   <button mat-flat-button color="primary" class="w-100 fs-4 p-4 text-uppercase my-0 d-md-none"
-          (click)="openDialogVerificaPrenotazione()">Prenota
-    Ristorante
+          (click)="openDialogVerificaPrenotazione()">{{"PRENOTA_RISTORANTE"| translate}}
   </button>
 </div>
 

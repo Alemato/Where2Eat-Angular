@@ -58,7 +58,7 @@
         </button>
       </p>
     </mat-drawer>
-    <div class="container-fluid col-12 col-md-6">
+    <div class="container-fluid col-12 col-md-6" [ngClass]="{'col-12 col-md-6': setContainerCondition()}">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>

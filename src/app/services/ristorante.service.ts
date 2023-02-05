@@ -14,4 +14,8 @@ export class RistoranteService {
   getRestHome(): Observable<Ristorante[]>{
     return this.http.get<Ristorante[]>(URL.RISTORANTI_HOME, {params: {'view': 'home'}});
   }
+
+  getRistoranteByIdRistorante(id: number): Observable<Ristorante>{
+    return this.http.get<Ristorante>(URL.RISTORANTE_ID + id);
+  }
 }

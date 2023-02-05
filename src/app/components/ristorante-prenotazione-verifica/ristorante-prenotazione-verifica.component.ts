@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Prenotazione} from "../../model/prenotazione";
 import {
   RistorantePrenotazionePrenotaComponent
 } from "../ristorante-prenotazione-prenota/ristorante-prenotazione-prenota.component";
 import {CustomValidators} from "../../validators/custom-validators";
-import {ErrorStateMatcher} from "@angular/material/core";
+import {PrenotazioneService} from "../../services/prenotazione.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-ristorante-prenotazione-verifica',
@@ -21,8 +22,10 @@ export class RistorantePrenotazioneVerificaComponent {
   errorePrenotazione?: boolean = false;
 
   constructor(private fb: FormBuilder,
-              public dialogRef: MatDialogRef<RistorantePrenotazioneVerificaComponent>,
-              public dialog: MatDialog
+              @Inject(MAT_DIALOG_DATA) public data: { idRistorante: number },
+              private dialogRef: MatDialogRef<RistorantePrenotazioneVerificaComponent>,
+              private dialog: MatDialog,
+              private prenotazioneService: PrenotazioneService
   ) {
     this.verificaForm = this.fb.group({
       dataPrenotazione: ['', [Validators.required, CustomValidators.dataPrenotazioneValid]],
@@ -33,26 +36,48 @@ export class RistorantePrenotazioneVerificaComponent {
 
   cercaPrenotazione(): void {
     this.errorePrenotazione = false;
-    let dt = new Date();
-    dt.setHours(this.verificaForm.value.oraPrenotazione.split(":")[0]);
-    dt.setMinutes(this.verificaForm.value.oraPrenotazione.split(":")[1]);
     this.prenotazione = this.verificaForm.value;
     console.log("cerca");
-    //TODO query verifica
-    let verifica = true;
-    if (verifica) {
-      this.dialogRef.close();
-      this.openDialogPrenotazione(dt);
-    } else {
-      this.errorePrenotazione = true;
-    }
+    this.prenotazioneService.verificarPrenotazione(this.data.idRistorante, this.verificaForm.value.dataPrenotazione.toLocaleDateString("en-AU"), this.verificaForm.value.oraPrenotazione, this.verificaForm.value.postiPrenotazione).subscribe({
+      next: (data) => {
+        console.log("data");
+        console.log(data);
+        if (data == true) {
+          this.dialogRef.close();
+          this.openDialogPrenotazione();
+        } else {
+          this.errorePrenotazione = true;
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+        if (error.status === 400) {
+          console.error('Verifiva prenotazioni request error: ' + error.status);
+          window.alert("Errore server 400");
+        }
+        if (error.status === 403) {
+          console.error('Verifiva prenotazioni request error: ' + error.status);
+          window.alert("Errore server 403");
+        }
+
+        if (error.status === 404) {
+          console.error('Verifiva prenotazioni request error: ' + error.status);
+          window.alert("Errore server 404");
+        }
+        if (error.status === 500) {
+          console.error('Verifiva prenotazioni request error: ' + error.status);
+          window.alert("Errore server 500");
+        }
+      }
+    });
   }
 
-  openDialogPrenotazione(ora: Date): void {
+  openDialogPrenotazione(): void {
     this.dialog.open(RistorantePrenotazionePrenotaComponent, {
       data: {
-        data: this.verificaForm.value.dataPrenotazione,
-        ora: ora,
+        idRistorante: this.data.idRistorante,
+        data: this.verificaForm.value.dataPrenotazione.toLocaleDateString("en-AU"),
+        ora: this.verificaForm.value.oraPrenotazione,
         numeroPosti: this.verificaForm.value.postiPrenotazione
       }
     });

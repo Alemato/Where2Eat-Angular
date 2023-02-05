@@ -270,8 +270,8 @@
   "RIFIUTATA_STATE": "Rejected",
   "COMPLETATA_STATE": "Completed",
   "ANNULLATA_STATE": "Cancelled",
-  "NESSUNA_PRENOTAZIONE": "You have no reservations",
-  "ANNULLA_PRENOTAZIONE": "Do you want to cancel your reservation?",
+  "NESSUNA_PRENOTAZIONE": "You have no bookings",
+  "ANNULLA_PRENOTAZIONE": "Do you want to cancel your booking?",
 
   "PRENOTA_UNTAVOLO": "Book a table",
   "NO_POSTI_MESSAGE": "Non ci sono posti disponibili!",

@@ -4,6 +4,7 @@ import {
   PrenotazioneCancelDialogModalComponent
 } from "../prenotazione-cancel-dialog-modal/prenotazione-cancel-dialog-modal.component";
 import {MatDialog} from "@angular/material/dialog";
+import {URL_BASE_IMG} from "../../constants";
 
 @Component({
   selector: 'app-prenotazione-card',
@@ -17,6 +18,8 @@ export class PrenotazioneCardComponent {
 
   @Output()
   deletePrenotazioneEvent: EventEmitter<Prenotazione>;
+
+  URL_BASE_IMG = URL_BASE_IMG;
 
   constructor(public dialog: MatDialog) {
     this.deletePrenotazioneEvent = new EventEmitter();

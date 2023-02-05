@@ -11,85 +11,38 @@ export class PrenotazioneService {
 
 
   constructor(private http: HttpClient) {
-    /*this.prenotazioniFuture = [
-      {
-        id: 1,
-        data: new Date(),
-        ora: new Date(),
-        statoPrenotazione: 1,
-        numeroPosti: 10,
-        nomeristorante: "Villa Crespi1"
-      },
-      {
-        id: 2,
-        data: new Date(),
-        ora: new Date(),
-        statoPrenotazione: 1,
-        numeroPosti: 10,
-        nomeristorante: "Villa Crespi2"
-      }
-    ]
-    this.prenotazioniPassate = [
-      {
-        id: 3,
-        data: new Date(),
-        ora: new Date(),
-        statoPrenotazione: 2,
-        numeroPosti: 10,
-        nomeristorante: "Villa Credddddddddddddddddddddddddddddddspi2"
-      },
-      {
-        id: 4,
-        data: new Date(),
-        ora: new Date(),
-        statoPrenotazione: 3,
-        numeroPosti: 11,
-        nomeristorante: "Villa Crespi3"
-      },
-      {
-        id: 5,
-        data: new Date(),
-        ora: new Date(),
-        statoPrenotazione: 4,
-        numeroPosti: 11,
-        nomeristorante: "Villa Crespi4"
-      },
-      {
-        id: 6,
-        data: new Date(),
-        ora: new Date(),
-        statoPrenotazione: 4,
-        numeroPosti: 11,
-        nomeristorante: "Villa Crespi5"
-      }
-    ]*/
   }
 
   getAllPrenotazioniUser(): Observable<Prenotazione[]> {
-    return this.http.get<Prenotazione[]>(URL.LISTA_PRENOTAZIONI_CLIENTE);
+    return this.http.get<Prenotazione[]>(URL.PRENOTAZIONI_CLIENTE);
   }
 
-  // getAllPrenotazioniUser(): Observable<string> {
-  //   return this.http.get<string>(URL.lISTA_PRENOTAZIONI_CLIENTE,{observe: 'response'}).pipe(
-  //     map((resp: HttpResponse<string>) => {
-  //       return resp.body;
-  //     }
-  //   );
-  // }
-
   cancelPrenotazione(prenotazione: Prenotazione): Observable<any> {
-    console.log("delete prenotazione");
-    console.log(prenotazione);
-    const modPrenotazione = {"id": prenotazione.id, "stato": 3}
-    console.log("modPrenotazione");
-    console.log(modPrenotazione);
-
-    return this.http.patch<any>(URL.RISTORANTE + "/" + prenotazione.id + "/prenotazioni", modPrenotazione,
+    const modPrenotazione = {id: prenotazione.id, stato: 3}
+    return this.http.patch<any>(URL.RISTORANTE + "/" + prenotazione.ristorante.id + "/prenotazioni", modPrenotazione,
       {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
-
         console.log('response cancel prenotazione');
         console.log(resp)
+      }));
+  }
+
+  verificarPrenotazione(idRistorante: number, data: string, ora: string, numeroPosti: number): Observable<any> {
+    const verificaPrenotazione = {"data": data, "ora": ora, "numeroPosti": numeroPosti};
+    return this.http.post<any>(URL.RISTORANTE + "/" + idRistorante + "/prenotazioni/verifica", verificaPrenotazione, {observe: 'response'}).pipe(
+      map((resp: HttpResponse<any>) => {
+        console.log('response verify prenotazione');
+        console.log(resp.body)
+        return resp.body;
+      }));
+  }
+
+  creaPrenotazione(idRistorante: number, data: string, ora: string, numeroPosti: number): Observable<any> {
+    const verificaPrenotazione = {id: idRistorante, data: data, ora: ora, numeroPosti: numeroPosti};
+    return this.http.post<any>(URL.PRENOTAZIONI_CLIENTE, verificaPrenotazione, {observe: 'response'}).pipe(
+      map((resp: HttpResponse<any>) => {
+        console.log('response create prenotazione');
+        console.log(resp.body)
       }));
   }
 }

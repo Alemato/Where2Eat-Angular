@@ -1,26 +1,26 @@
 <form [formGroup]="verificaForm" (ngSubmit)="cercaPrenotazione()" class="form-dim">
   <h1 mat-dialog-title>Prenota un tavolo</h1>
   <div class="d-flex justify-content-center text-danger fw-bold pb-0" *ngIf="errorePrenotazione">
-    <span>Non ci sono posti disponibili!</span>
+    <span>{{ "NO_POSTI_MESSAGE" | translate }}!</span>
   </div>
   <div class="d-flex justify-content-center text-danger fw-bold pb-3" *ngIf="errorePrenotazione">
-    <span>Per favore scegline un'altra data</span>
+    <span>{{ "NO_POSTI_MESSAGE_DUE" | translate }}</span>
   </div>
 
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
-    <mat-label>Scegli la data</mat-label>
+    <mat-label>{{ "LABEL_DATA" | translate }}</mat-label>
     <input matInput [matDatepicker]="picker" id="dataPrenotazione" formControlName="dataPrenotazione">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="verificaForm && verificaForm.get('dataPrenotazione')?.hasError('required')">
-      La data è <strong>richiesta</strong>
+      <span>{{ "LABEL_DATA" | translate }} </span><strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
     </mat-error>
     <mat-error *ngIf="verificaForm?.get('dataPrenotazione')?.hasError('dateError')">
-      La data è <strong>passata</strong>
+      <span>{{ "LABEL_DATA" | translate }} </span><strong>{{ "ERROR_MESSAGE_PASSATA" | translate }}</strong>
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
-    <mat-label>Scegli l'ora</mat-label>
+    <mat-label>{{ "LABEL_ORA" | translate }}</mat-label>
     <mat-select id="oraPrenotazione" formControlName="oraPrenotazione">
       <mat-option value="12:00">12:00</mat-option>
       <mat-option value="12:15">12:15</mat-option>
@@ -54,24 +54,25 @@
       <mat-option value="22:15">22:00</mat-option>
     </mat-select>
     <mat-error *ngIf="verificaForm?.get('oraPrenotazione')?.hasError('required')">
-      L'ora è <strong>richiesta</strong>
+      {{ "ERROR_MESSAGE_ORA" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
     </mat-error>
     <mat-error *ngIf="verificaForm?.get('oraPrenotazione')?.hasError('pattern')">
-      Valore inserito <strong>non corretto</strong>
+      {{ "ERROR_MESSAGE_VALORE" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
-    <mat-label>Numero posti</mat-label>
+    <mat-label>{{ "LABEL_POSTI" | translate }}</mat-label>
     <input type="number" matInput id="postiPrenotazione" formControlName="postiPrenotazione">
     <mat-error *ngIf="verificaForm?.get('postiPrenotazione')?.hasError('required')">
-      Il numero dei posti è <strong>richiesto</strong>
+      {{ "ERROR_MESSAGE_POSTI" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
     </mat-error>
     <mat-error *ngIf="verificaForm?.get('postiPrenotazione')?.hasError('pattern')">
-      Valore inserito <strong>non corretto</strong>
+      {{ "ERROR_MESSAGE_VALORE" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
     </mat-error>
   </mat-form-field>
   <div class="d-flex justify-content-center py-3">
-    <button mat-raised-button type="submit" class="w-75" [disabled]="!verificaForm.valid" color="primary">Cerca</button>
+    <button mat-raised-button type="submit" class="w-75" [disabled]="!verificaForm.valid"
+            color="primary">{{ "CERCA" | translate }}</button>
   </div>
 
 </form>

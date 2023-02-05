@@ -273,7 +273,7 @@
   "ANNULLA_PRENOTAZIONE": "Vuoi annullare la prenotazione?",
 
   "PRENOTA_UNTAVOLO": "Prenota un tavolo",
-  "NO_POSTI_MESSAGE": "Non ci sono posti disponibili!",
+  "NO_POSTI_MESSAGE": "Non ci sono posti disponibili",
   "NO_POSTI_MESSAGE_DUE": "Per favore scegline un'altra data",
   "LABEL_DATA": "Scegli la data",
   "LABEL_ORA": "Scegli l'ora",
@@ -287,9 +287,9 @@
   "ERROR_MESSAGE_NON_CORRETTO": "non corretto",
   "ERROR_MESSAGE_POSTI": "Il numero dei posti è ",
   "CERCA": "Cerca",
-  "DATA": "Data:",
-  "ORA": "Ora:",
-  "POSTID": "Posti:",
+  "DATA": "Data",
+  "ORA": "Ora",
+  "POSTI": "Posti:",
   "I_POSTI_SONO_DISPONIBILI": "I posti sono disponibili",
   "CONFERMA_PRENOTAZIONE": "Vuoi confermare la prenotazione con le seguenti informazioni:"
 }

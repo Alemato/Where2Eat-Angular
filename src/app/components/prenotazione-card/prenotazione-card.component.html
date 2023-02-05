@@ -15,7 +15,7 @@
               fill-rule="evenodd"
               d="m15.12 2.23-9.79 9.78L.88 7.56 0 8.44l5.33 5.34L16 3.11l-.88-.88z"></path></g>
             </svg>
-            Prenptata</span>
+            {{ "PRENOTATA_STATE" | translate }}</span>
         </div>
         <div *ngIf="prenotazione?.statoPrenotazione == 1">
           <span class="text-white bg-success bg-opacity-75 px-2 py-1 rounded small">
@@ -29,7 +29,7 @@
               fill-rule="evenodd"
               d="m15.12 2.23-9.79 9.78L.88 7.56 0 8.44l5.33 5.34L16 3.11l-.88-.88z"></path></g>
             </svg>
-            Accettata</span>
+            {{ "CONFERMATA_STATE" | translate }}</span>
         </div>
         <div *ngIf="prenotazione?.statoPrenotazione === 2">
           <span class="text-white bg-danger bg-opacity-75 px-2 py-1 rounded small">
@@ -44,7 +44,7 @@
               id="primary" d="M19,19,5,5M19,5,5,19"
               style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width:2.4;"></path></g>
           </svg>
-            Annullata</span>
+            {{ "ANNULLATA_STATE" | translate }}</span>
         </div>
 
         <div *ngIf="prenotazione?.statoPrenotazione == 3">
@@ -59,7 +59,7 @@
               id="primary" d="M19,19,5,5M19,5,5,19"
               style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width:2.4;"></path></g>
           </svg>
-            Rifiutata</span>
+            {{ "RIFIUTATA_STATE" | translate }}</span>
         </div>
         <div *ngIf="prenotazione?.statoPrenotazione == 4">
           <span class="text-white bg-success bg-opacity-75 px-2 py-1 rounded small">
@@ -73,12 +73,12 @@
               fill-rule="evenodd"
               d="m15.12 2.23-9.79 9.78L.88 7.56 0 8.44l5.33 5.34L16 3.11l-.88-.88z"></path></g>
             </svg>
-            Completata</span>
+            {{ "COMPLETATA_STATE" | translate }}</span>
         </div>
       </mat-card-subtitle>
-      <mat-card-subtitle>Roma</mat-card-subtitle>
-      <img alt="" class="rounded" mat-card-sm-image
-           src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg">
+      <mat-card-subtitle class="truncate-cell">{{ prenotazione.ristorante.localita }} - {{ prenotazione.ristorante.indirizzo }}</mat-card-subtitle>
+      <img alt="Ristornate 1" class="rounded" mat-card-sm-image
+           [src]="URL_BASE_IMG + prenotazione.ristorante.immagini[0].path">
     </mat-card-title-group>
   </mat-card-header>
   <mat-card-content>
@@ -138,7 +138,7 @@
   <mat-card-actions *ngIf="prenotazione?.statoPrenotazione === 0 || prenotazione?.statoPrenotazione === 1"
                     class="d-flex justify-content-center mx-2 pt-2">
     <button mat-raised-button color="warn" class="w-100"
-            (click)="openDialogCancell('300ms', '300ms')">Annulla
+            (click)="openDialogCancell('300ms', '300ms')">{{ "CANCEL_BUTTON" | translate }}
     </button>
   </mat-card-actions>
 </mat-card>

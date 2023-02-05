@@ -1,11 +1,11 @@
-<h1 mat-dialog-title>I posti sono disponibili</h1>
+<h1 mat-dialog-title>{{ "I_POSTI_SONO_DISPONIBILI" | translate }}</h1>
 <div mat-dialog-content>
-  <p> Vuoi confermare la prenotazione con le seguenti informazioni:</p>
-  <span class="fw-bold">Data:</span> {{data.data | date: "dd/MM/yyyy" }} <br>
-  <span class="fw-bold">Ora:</span> {{data.ora | date: "hh:mm"}}<br>
-  <span class="fw-bold">Posti:</span> {{data.numeroPosti}}
+  <p>{{ "CONFERMA_PRENOTAZIONE" | translate }}</p>
+  <span class="fw-bold">{{ "DATA" | translate }}:</span> {{data.data}} <br>
+  <span class="fw-bold">{{ "ORA" | translate }}:</span> {{data.ora}}<br>
+  <span class="fw-bold">{{ "POSTI" | translate }}:</span> {{data.numeroPosti}}
 </div>
 <div mat-dialog-actions class="d-flex justify-content-between pb-3 px-3">
-  <button mat-raised-button (click)="onNoClick()" color="warn">No</button>
-  <button mat-raised-button (click)="onSiClick()" color="primary" cdkFocusInitial>Si</button>
+  <button mat-raised-button (click)="onNoClick()" color="warn">{{ "NO" | translate }}</button>
+  <button mat-raised-button (click)="onSiClick()" color="primary" cdkFocusInitial>{{ "YES" | translate }}</button>
 </div>

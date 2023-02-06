@@ -300,5 +300,6 @@
   "ERROR_MESSAGE_NOME": "The name is",
   "ERROR_MESSAGE_COGNOME": "The surname is",
   "ERROR_MESSAGE_EMAIL": "The email is",
-  "ERROR_MESSAGE_TELEFONO": "The telephone number is"
+  "ERROR_MESSAGE_TELEFONO": "The telephone number is",
+  "RE_PASSWORD": "Re-Password"
 }

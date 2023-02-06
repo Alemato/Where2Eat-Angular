@@ -37,5 +37,8 @@
       </mat-form-field>
       <button mat-raised-button type="submit" color="primary" [disabled]="!loginFormModel.valid">{{"LOGIN_BUTTON" | translate}}</button>
     </form>
+    <p class="text-center">
+      Se non Hai un account: <a [routerLink]="['/restrazione']">Registrati</a>
+    </p>
   </mat-card-content>
 </mat-card>

@@ -37,8 +37,8 @@ export class PrenotazioniPageComponent {
           } else {
             this.prenotazioniPassate.push(prenotazione);
           }
-          this.loading = false;
         })
+        this.loading = false;
       },
       error: (error: HttpErrorResponse) => {
         this.loading = false;

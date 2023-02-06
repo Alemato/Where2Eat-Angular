@@ -9,6 +9,14 @@ export interface Account {
   password: string;
 }
 
+export interface NewUser {
+  nome: string;
+  cognome: string;
+  telefono: string;
+  email: string;
+  password: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -99,7 +107,13 @@ export class UserService {
   editUserData(user: User): Observable<any> {
     return this.http.patch<any>(URL.ACCOUNT, user, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
-        console.log('response modifica dati utente');
+      }));
+  }
+
+  registration(newUser: NewUser): Observable<any> {
+    return this.http.post<any>(URL.ACCOUNT, newUser, {observe: 'response'}).pipe(
+      map((resp: HttpResponse<any>) => {
+        console.log('response registrazione utente');
         console.log(resp.body)
       }));
   }

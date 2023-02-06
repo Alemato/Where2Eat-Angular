@@ -1,0 +1,12 @@
+.utente-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+mat-card-title {
+  padding-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+

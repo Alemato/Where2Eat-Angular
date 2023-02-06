@@ -297,5 +297,6 @@
   "ERROR_MESSAGE_NOME": "Il nome è",
   "ERROR_MESSAGE_COGNOME": "Il cognome è",
   "ERROR_MESSAGE_EMAIL": "L'email è",
-  "ERROR_MESSAGE_TELEFONO": "Il numero di telefono è"
+  "ERROR_MESSAGE_TELEFONO": "Il numero di telefono è",
+  "RE_PASSWORD": "Re-Password"
 }

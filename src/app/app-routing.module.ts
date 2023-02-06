@@ -25,6 +25,11 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
+    path: 'restrazione',
+    loadChildren: () => import('./pages/registrazione-page/registrazione-page.module').then(m => m.RegistrazionePageModule),
+    canActivate: [LoginGuard]
+  },
+  {
     path: 'prenotazioni',
     loadChildren: () => import('./pages/prenotazioni-page/prenotazioni-page.module').then(m => m.PrenotazioniPageModule),
     canActivate: [AuthGuard]
@@ -34,7 +39,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/ricerca-ristoranti-page/ricerca-ristoranti-page.module').then(m => m.RicercaRistorantiPageModule),
     canActivate: [AuthGuard]
   },
-  { path: 'datiutente',
+  {
+    path: 'datiutente',
     loadChildren: () => import('./pages/dati-utente-page/dati-utente-page.module').then(m => m.DatiUtentePageModule),
     canActivate: [AuthGuard]
   }
@@ -45,4 +51,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

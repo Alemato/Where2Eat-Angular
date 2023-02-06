@@ -3,7 +3,7 @@
 </div>
 <h2 class="mt-3">{{"SEARCH_RESULTS_TITLE" | translate}}</h2>
 
-<div *ngIf="ristoranti">
+<div *ngIf="ristoranti && ristoranti.length > 0">
   <h3>{{"RISULTATI_TROVATI" | translate}}: {{ristoranti ? ristoranti.length : 0}}</h3>
   <mat-divider class="mb-3"></mat-divider>
   <mat-paginator class="mb-3" [length]="ristoranti.length" [pageSizeOptions]="pageSizeOptions"
@@ -18,5 +18,11 @@
     <app-ristorante-card [ristorante]="ristorante"></app-ristorante-card>
   </div>
 
+</div>
 
+<div *ngIf="!ristoranti || (ristoranti && ristoranti.length == 0)">
+  <h3>{{"RISULTATI_TROVATI" | translate}}: 0</h3>
+  <mat-divider class="mb-3"></mat-divider>
+  <h1 class="text-center">{{"NON_CI_SONO_SERACH" | translate}}</h1>
+  <h1 class="text-center">{{"CAMBIA_PARAMETRI_SERACH" | translate}}</h1>
 </div>

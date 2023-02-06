@@ -35,6 +35,8 @@
   "RICERCA_RISTORANTE": "Search Restaurant",
   "RISULTATI_TROVATI": "Results Found",
   "PRENOTAZIONI": "Booking",
+  "NON_CI_SONO_SERACH": "There are no results compatible with your search.",
+  "CAMBIA_PARAMETRI_SERACH": "Try changing search parameters!",
   "BUTTON_TAB_ACCEPTED": "Accepted",
   "BUTTON_TAB_REQUESTS": "Requests",
   "BUTTON_TAB_LESSONS": "Lessons",

@@ -1,0 +1,56 @@
+<div class="container-fluid" *ngIf="(this.user$ | async) as user">
+  <form [formGroup]="utenteForm" class="utente-form p-3 p-md-5" (ngSubmit)="salvaDati()">
+    <h2 class="text-center pb-4">{{"DATI_UTENTE" | translate}}</h2>
+
+    <mat-form-field class="mb-4">
+      <mat-label>{{"NAME" | translate}}</mat-label>
+      <input type="text" matInput id="nome" formControlName="nome">
+      <mat-error
+        *ngIf="utenteForm.get('nome')?.hasError('required')">
+        {{ "ERROR_MESSAGE_NOME" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="mb-4">
+      <mat-label>Cognome</mat-label>
+      <input type="text" matInput id="cognome" formControlName="cognome">
+      <mat-error *ngIf="utenteForm.get('cognome')?.hasError('required')">
+        {{ "ERROR_MESSAGE_COGNOME" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mb-4">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput id="email" formControlName="email">
+      <mat-error
+        *ngIf="utenteForm.get('email')?.hasError('required')">
+        {{ "ERROR_MESSAGE_EMAIL" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
+      </mat-error>
+      <mat-error
+        *ngIf="utenteForm.get('email')?.hasError('pattern')">
+        {{ "EMAIL" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTA" | translate }}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mb-4">
+      <mat-label>Telefono</mat-label>
+      <input type="text" matInput id="telefono" formControlName="telefono">
+      <mat-error
+        *ngIf="utenteForm.get('telefono')?.hasError('required')">
+        {{ "ERROR_MESSAGE_TELEFONO" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
+      </mat-error>
+      <mat-error
+        *ngIf="utenteForm.get('telefono')?.hasError('pattern')">
+        {{ "NUMERO_DI_TELEFONO" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-between">
+      <button mat-raised-button routerLink="/home" color="warn">{{"CANCEL_BUTTON" | translate}}</button>
+      <button mat-raised-button type="submit" color="primary"
+              [disabled]="!utenteForm.valid">{{"SAVE_BUTTON" | translate}}</button>
+    </div>
+  </form>
+</div>
+

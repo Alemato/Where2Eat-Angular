@@ -40,7 +40,8 @@
       <p class="px-3 pt-3">Menù</p>
 
       <mat-nav-list>
-        <mat-list-item routerLink="/home" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
+        <mat-list-item routerLink="/home" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'"
+                       (click)="drawer.toggle();">
           <mat-icon matListItemIcon>home</mat-icon>
           <div matListItemTitle>Home</div>
         </mat-list-item>
@@ -48,6 +49,11 @@
                        [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>note_add</mat-icon>
           <div matListItemTitle>Prenotazioni</div>
+        </mat-list-item>
+        <mat-list-item [routerLink]="['/datiutente']" routerLinkActive="mdc-list-item--activated"
+                       [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
+          <mat-icon matListItemIcon>supervisor_account</mat-icon>
+          <div matListItemTitle>Dati utente</div>
         </mat-list-item>
 
       </mat-nav-list>

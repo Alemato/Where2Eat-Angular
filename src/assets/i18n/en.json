@@ -286,12 +286,18 @@
   "ERROR_MESSAGE_RICHIESTA": "request",
   "ERROR_MESSAGE_RICHIESTO": "request",
   "ERROR_MESSAGE_VALORE": "The value entered ",
-  "ERROR_MESSAGE_NON_CORRETTO": "incorrectly",
+  "ERROR_MESSAGE_NON_CORRETTO": "incorrect",
+  "ERROR_MESSAGE_NON_CORRETTA": "incorrect",
   "ERROR_MESSAGE_POSTI": "The number of places is ",
   "CERCA": "Search:",
   "DATA": "Date:",
   "ORA": "Time:",
   "POSTID": "Seats:",
   "I_POSTI_SONO_DISPONIBILI": "Places are available",
-  "CONFERMA_PRENOTAZIONE": "Would you like to confirm your booking with the following information:"
+  "CONFERMA_PRENOTAZIONE": "Would you like to confirm your booking with the following information:",
+  "DATI_UTENTE": "User data",
+  "ERROR_MESSAGE_NOME": "The name is",
+  "ERROR_MESSAGE_COGNOME": "The surname is",
+  "ERROR_MESSAGE_EMAIL": "The email is",
+  "ERROR_MESSAGE_TELEFONO": "The telephone number is"
 }

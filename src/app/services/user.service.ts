@@ -17,6 +17,7 @@ export class UserService {
   private authToken: string = '';
   private loggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private user$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+
   constructor(private http: HttpClient) {
     let token: string | null = localStorage.getItem(AUTH_TOKEN);
     if (token !== null && token !== undefined && token !== '') {
@@ -66,7 +67,7 @@ export class UserService {
         const token = resp.headers.get(X_AUTH);
         console.log('token dal server');
         console.log(token);
-        if(token != null || token != undefined) {
+        if (token != null || token != undefined) {
           localStorage.setItem(AUTH_TOKEN, token);
           this.authToken = token;
         }
@@ -90,4 +91,16 @@ export class UserService {
     this.user$.next({} as User);
   }
 
+  editUserLocalData(user: User) {
+    localStorage.setItem(UTENTE_STORAGE, JSON.stringify(user));
+    this.user$.next(user);
   }
+
+  editUserData(user: User): Observable<any> {
+    return this.http.patch<any>(URL.ACCOUNT, user, {observe: 'response'}).pipe(
+      map((resp: HttpResponse<any>) => {
+        console.log('response modifica dati utente');
+        console.log(resp.body)
+      }));
+  }
+}

@@ -284,11 +284,17 @@
   "ERROR_MESSAGE_RICHIESTO": "richiesto",
   "ERROR_MESSAGE_VALORE": "Valore inserito ",
   "ERROR_MESSAGE_NON_CORRETTO": "non corretto",
+  "ERROR_MESSAGE_NON_CORRETTA": "non corretta",
   "ERROR_MESSAGE_POSTI": "Il numero dei posti è ",
   "CERCA": "Cerca",
   "DATA": "Data",
   "ORA": "Ora",
   "POSTI": "Posti:",
   "I_POSTI_SONO_DISPONIBILI": "I posti sono disponibili",
-  "CONFERMA_PRENOTAZIONE": "Vuoi confermare la prenotazione con le seguenti informazioni:"
+  "CONFERMA_PRENOTAZIONE": "Vuoi confermare la prenotazione con le seguenti informazioni:",
+  "DATI_UTENTE": "Dati Utente",
+  "ERROR_MESSAGE_NOME": "Il nome è",
+  "ERROR_MESSAGE_COGNOME": "Il cognome è",
+  "ERROR_MESSAGE_EMAIL": "L'email è",
+  "ERROR_MESSAGE_TELEFONO": "Il numero di telefono è"
 }

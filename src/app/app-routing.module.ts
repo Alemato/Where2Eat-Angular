@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./pages/ricerca-ristoranti-page/ricerca-ristoranti-page.module').then(m => m.RicercaRistorantiPageModule),
     canActivate: [AuthGuard]
+  },
+  { path: 'datiutente',
+    loadChildren: () => import('./pages/dati-utente-page/dati-utente-page.module').then(m => m.DatiUtentePageModule),
+    canActivate: [AuthGuard]
   }
 
 ];

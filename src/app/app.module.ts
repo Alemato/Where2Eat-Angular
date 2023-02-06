@@ -16,9 +16,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {httpInterceptorProviders} from "./interceptors";
 import {MatDividerModule} from "@angular/material/divider";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
 import {
   RicercaRistoranteModalComponent
 } from './components/ricerca-ristorante-modal/ricerca-ristorante-modal.component';
@@ -32,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    RicercaRistoranteModalComponent,
+    RicercaRistoranteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -55,12 +57,15 @@ export function createTranslateLoader(http: HttpClient) {
     MatListModule,
     MatLineModule,
     MatButtonToggleModule,
-    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
     MatDialogModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

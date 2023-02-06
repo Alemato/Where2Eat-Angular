@@ -48,12 +48,12 @@
         <mat-list-item [routerLink]="['/prenotazioni']" routerLinkActive="mdc-list-item--activated"
                        [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>note_add</mat-icon>
-          <div matListItemTitle>Prenotazioni</div>
+          <div matListItemTitle>{{"PRENOTAZIONI" | translate}}</div>
         </mat-list-item>
         <mat-list-item [routerLink]="['/datiutente']" routerLinkActive="mdc-list-item--activated"
                        [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>supervisor_account</mat-icon>
-          <div matListItemTitle>Dati utente</div>
+          <div matListItemTitle>{{"DATI_UTENTE" | translate}}</div>
         </mat-list-item>
 
       </mat-nav-list>

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Prenotazione} from "../../model/prenotazione";
 import {PrenotazioneService} from "../../services/prenotazione.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-prenotazioni-page',
@@ -14,6 +15,13 @@ export class PrenotazioniPageComponent {
   prenotazioniFuture: Array<Prenotazione> = [];
   prenotazioniPassate: Array<Prenotazione> = [];
   loading: boolean;
+
+  pageIndex: number = 0;
+  pageSize: number = 1;
+  lowValue: number = 0;
+  highValue: number = 1;
+  pageSizeOptions = [1, 5, 10];
+  showFirstLastButtons = true;
 
   constructor(private prenotazioniService: PrenotazioneService) {
     this.loading = true;
@@ -29,9 +37,11 @@ export class PrenotazioniPageComponent {
           } else {
             this.prenotazioniPassate.push(prenotazione);
           }
+          this.loading = false;
         })
       },
       error: (error: HttpErrorResponse) => {
+        this.loading = false;
         console.log(error);
         if (error.status === 400) {
           console.error('Delete Prenotazione request error: ' + error.status);
@@ -51,7 +61,6 @@ export class PrenotazioniPageComponent {
         }
       }
     });
-    this.loading = false;
   }
 
   deleteEvHandler(prenotazione: Prenotazione) {
@@ -67,8 +76,10 @@ export class PrenotazioniPageComponent {
           }
           this.prenotazioniFuture?.splice(objWithIdIndex, 1);
         }
+        this.loading = false;
       },
       error: (error: HttpErrorResponse) => {
+        this.loading = false;
         console.log(error);
         if (error.status === 403) {
           console.error('Prenotazioni request error: ' + error.status);
@@ -80,5 +91,24 @@ export class PrenotazioniPageComponent {
         }
       }
     })
+  }
+
+  getPaginator(event: PageEvent) {
+    console.log(event);
+    if (event.pageSize != this.pageSize) {
+      this.pageSize = event.pageSize;
+      this.highValue = event.pageSize;
+      this.pageIndex = 0;
+      this.lowValue = 0;
+    } else {
+      if (event.pageIndex === this.pageIndex + 1) {
+        this.lowValue = this.lowValue + this.pageSize;
+        this.highValue = this.highValue + this.pageSize;
+      } else if (event.pageIndex === this.pageIndex - 1) {
+        this.lowValue = this.lowValue - this.pageSize;
+        this.highValue = this.highValue - this.pageSize;
+      }
+      this.pageIndex = event.pageIndex;
+    }
   }
 }

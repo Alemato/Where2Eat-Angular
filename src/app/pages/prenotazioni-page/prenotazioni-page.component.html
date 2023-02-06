@@ -24,7 +24,15 @@
     <p class="mt-2 ms-2 mb-1 py-2 fs-6 fw-bold">{{ "PASSATE_PRENOTAZIONI" | translate }}
       - {{ prenotazioniPassate.length }}</p>
     <hr class="my-1"/>
-    <app-prenotazione-card *ngFor="let singolaPrenotazione of prenotazioniPassate"
-                           [prenotazione]="singolaPrenotazione"></app-prenotazione-card>
+    <mat-paginator class="mb-3" [length]="prenotazioniPassate.length" [pageSizeOptions]="pageSizeOptions"
+                   [showFirstLastButtons]="showFirstLastButtons" [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   aria-label="Select page" (page)="getPaginator($event)">
+    </mat-paginator>
+    <hr class="my-1"/>
+    <div *ngFor="let singolaPrenotazione of prenotazioniPassate |
+     slice: lowValue : highValue">
+      <app-prenotazione-card [prenotazione]="singolaPrenotazione"></app-prenotazione-card>
+    </div>
   </div>
 </ng-template>

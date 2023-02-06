@@ -1,7 +1,8 @@
 <mat-card class="my-3" *ngIf="(prenotazione) as prenotazione">
   <mat-card-header>
     <mat-card-title-group>
-      <mat-card-title class="truncate-cell">{{ prenotazione.ristorante.ragioneSociale }}</mat-card-title>
+      <mat-card-title class="truncate-cell" [routerLink]="['/ristoranti', prenotazione.ristorante.id]"
+                      style="cursor: pointer;">{{ prenotazione.ristorante.ragioneSociale }}</mat-card-title>
       <mat-card-subtitle class="py-1">
         <div *ngIf="prenotazione?.statoPrenotazione == 0">
           <span class="text-white bg-info bg-opacity-75 px-2 py-1 rounded small">

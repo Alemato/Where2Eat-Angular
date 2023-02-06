@@ -11,6 +11,7 @@ import {
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {TranslateModule} from "@ngx-translate/core";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 const routes: Routes = [{path: '', component: PrenotazioniPageComponent}];
 
@@ -28,6 +29,7 @@ const routes: Routes = [{path: '', component: PrenotazioniPageComponent}];
     MatDialogModule,
     MatProgressSpinnerModule,
     TranslateModule,
+    MatPaginatorModule,
   ]
 })
 export class PrenotazioniPageModule {

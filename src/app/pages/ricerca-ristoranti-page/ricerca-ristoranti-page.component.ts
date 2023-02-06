@@ -58,6 +58,8 @@ export class RicercaRistorantiPageComponent implements OnInit {
     if (event.pageSize != this.pageSize) {
       this.pageSize = event.pageSize;
       this.highValue = event.pageSize;
+      this.pageIndex = 0;
+      this.lowValue = 0;
     } else {
       if (event.pageIndex === this.pageIndex + 1) {
         this.lowValue = this.lowValue + this.pageSize;
@@ -66,7 +68,6 @@ export class RicercaRistorantiPageComponent implements OnInit {
         this.lowValue = this.lowValue - this.pageSize;
         this.highValue = this.highValue - this.pageSize;
       }
-
       this.pageIndex = event.pageIndex;
     }
   }

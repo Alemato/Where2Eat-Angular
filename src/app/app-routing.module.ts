@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from "./guards/auth.guard";
+import {LoginGuard} from "./guards/login.guard";
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule),
+    canActivate: [LoginGuard]
   },
   {
     path: 'prenotazioni',

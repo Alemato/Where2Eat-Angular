@@ -21,14 +21,15 @@ export class HomePageComponent implements OnInit {
       next: (data) => {
         console.log(data);
         this.ristornati = data;
+        this.loading = false;
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 500) {
           console.error('login request error: ' + error.status);
           window.alert("Errore server 500");
         }
+        this.loading = false;
       }
     });
-    this.loading = false;
   }
 }

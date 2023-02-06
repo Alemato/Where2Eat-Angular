@@ -27,9 +27,6 @@ export class RistoranteCardComponent {
         initialValue
       );
       const result = (sumWithInitial / voti.length).toPrecision(2);
-      console.log(voti);
-      console.log(sumWithInitial);
-      console.log(result);
       return String(result);
     }
     return "0.0";

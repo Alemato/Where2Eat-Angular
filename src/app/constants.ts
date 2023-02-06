@@ -6,7 +6,8 @@ export const URL = {
   PRENOTAZIONI_CLIENTE: URL_BASE + "/prenotazioni",
   RISTORANTE: URL_BASE + "/ristoranti",
   RISTORANTI_HOME: URL_BASE + '/ristoranti',
-  RISTORANTE_ID: URL_BASE + "/ristoranti/"
+  RISTORANTE_ID: URL_BASE + "/ristoranti/",
+  SEARCH: URL_BASE + "/ristoranti/search"
 }
 export const AUTH_TOKEN = 'auth-token';
 export const X_AUTH = 'access_token';

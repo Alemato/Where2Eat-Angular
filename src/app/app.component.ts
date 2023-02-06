@@ -8,6 +8,7 @@ import {User} from "./model/user";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {
+  Ricerca,
   RicercaRistoranteModalComponent
 } from "./components/ricerca-ristorante-modal/ricerca-ristorante-modal.component";
 
@@ -69,5 +70,8 @@ export class AppComponent {
     this.dialog.open(RicercaRistoranteModalComponent);
   }
 
-  search(){}
+  search() {
+    const ricerca: Ricerca = this.searchFormModel.value;
+    this.router.navigate(['/search'], {queryParams: ricerca});
+  }
 }

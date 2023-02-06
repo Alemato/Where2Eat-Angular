@@ -70,9 +70,6 @@ export class RistorantePageComponent implements OnInit {
         initialValue
       );
       const result = (sumWithInitial / voti.length).toPrecision(2);
-      console.log(voti);
-      console.log(sumWithInitial);
-      console.log(result);
       return String(result);
     }
     return "0.0";
@@ -83,20 +80,14 @@ export class RistorantePageComponent implements OnInit {
       if (serv.length >= 4) {
         let result = [];
         const offset = Math.floor(serv.length / 4);
-        console.log("offset: ", offset);
         const arry1 = serv.slice(0, offset);
-        console.log("arry1: ", arry1);
         const arry2 = serv.slice(offset, offset + offset);
-        console.log("arry2: ", arry2);
         const arry3 = serv.slice(offset + offset + offset, offset + offset + offset + offset);
-        console.log("arry3: ", arry3);
         const arry4 = serv.slice(offset + offset + offset + offset);
-        console.log("arry4: ", arry4);
         result.push(arry1);
         result.push(arry2);
         result.push(arry3);
         result.push(arry4);
-        console.log("result: ", result);
         return result;
       } else if (serv.length === 3) {
         let result = [];
@@ -106,7 +97,6 @@ export class RistorantePageComponent implements OnInit {
         result.push(arry1);
         result.push(arry2);
         result.push(arry3);
-        console.log("result: ", result);
         return result;
       } else if (serv.length == 2) {
         let result = [];

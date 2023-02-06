@@ -3,6 +3,11 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 
+export interface Ricerca {
+  cosa: string | null;
+  dove: string | null;
+}
+
 @Component({
   selector: 'app-ricerca-ristorante-modal',
   templateUrl: './ricerca-ristorante-modal.component.html',
@@ -10,6 +15,7 @@ import {Router} from "@angular/router";
 })
 export class RicercaRistoranteModalComponent {
   searchFormModelModal: FormGroup;
+
   constructor(private formBuilder: FormBuilder,
               private dialogRef: MatDialogRef<RicercaRistoranteModalComponent>,
               private router: Router) {
@@ -19,8 +25,9 @@ export class RicercaRistoranteModalComponent {
     });
   }
 
-  search(){
+  search() {
     this.dialogRef.close();
-    this.router.navigate(['/home']);
+    const ricerca: Ricerca = this.searchFormModelModal.value;
+    this.router.navigate(['/search'], {queryParams: ricerca});
   }
 }

@@ -1,0 +1,22 @@
+<div [hidden]="!loading" class="loading-container pt-5">
+  <mat-spinner class="loading-spinner"></mat-spinner>
+</div>
+<h2 class="mt-3">{{"SEARCH_RESULTS_TITLE" | translate}}</h2>
+
+<div *ngIf="ristoranti">
+  <h3>{{"RISULTATI_TROVATI" | translate}}: {{ristoranti ? ristoranti.length : 0}}</h3>
+  <mat-divider class="mb-3"></mat-divider>
+  <mat-paginator class="mb-3" [length]="ristoranti.length" [pageSizeOptions]="pageSizeOptions"
+                 [showFirstLastButtons]="showFirstLastButtons" [pageSize]="pageSize"
+                 [pageIndex]="pageIndex"
+                 aria-label="Select page" (page)="getPaginatorData($event)">
+  </mat-paginator>
+  <mat-divider></mat-divider>
+
+  <div *ngFor="let ristorante of ristoranti |
+     slice: lowValue : highValue">
+    <app-ristorante-card [ristorante]="ristorante"></app-ristorante-card>
+  </div>
+
+
+</div>

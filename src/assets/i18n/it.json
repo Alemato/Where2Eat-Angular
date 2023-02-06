@@ -32,7 +32,7 @@
   "DESCRIZIONE_RISTORANTE": "Descrizione Ristorante",
   "SERVIZI_OFFERTI": "Servizi Offerti",
   "RICERCA_RISTORANTE": "Ricerca Ristorante",
-
+  "RISULTATI_TROVATI": "Risultati Trovati",
   "BUTTON_TAB_ACCEPTED": "Accettate",
   "BUTTON_TAB_REQUESTS": "Richieste",
   "BUTTON_TAB_LESSONS": "Lezioni",
@@ -52,18 +52,16 @@
   "MICRO_MATERIAL_SELECT": "Seleziona micro materia",
   "LAUNCH_CHAT_BUTTON": "Avvia Chat",
   "LANGUAGE": "Lingua",
-
   "NOT_AVAILABLE": "Non Disponibile",
   "VISUALIZE": "Visualizza",
   "MODIFIED": "Modifica",
-
   "INSERTION_LESSON_TITLE": "Inserimento Lezione",
   "LESSON_TITLE": "Lezione",
   "LIST-CHAT-TITLE": "Lista Chat",
   "PROFILE_TITLE": "Profilo",
   "REGISTRATION_TITLE": "Registrazione",
   "SEARCH_LESSONS_TITLE": "Ricerca Lezioni",
-  "SEARCH_RESULTS_TITLE": "Risultati Ricerca",
+  "SEARCH_RESULTS_TITLE": "Risultati di Ricerca",
   "HISTORIC_LESSONS_TITLE": "Storico Lezioni",
   "ADVERTISEMENTS_PLACED_TITLE": "Annunci Pubblicati",
   "MODIFIED_LESSON_TITLE": "Modifica Lezione",

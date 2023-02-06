@@ -22,8 +22,15 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule)
   },
-  { path: 'prenotazioni',
-    loadChildren: () => import('./pages/prenotazioni-page/prenotazioni-page.module').then(m => m.PrenotazioniPageModule)
+  {
+    path: 'prenotazioni',
+    loadChildren: () => import('./pages/prenotazioni-page/prenotazioni-page.module').then(m => m.PrenotazioniPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/ricerca-ristoranti-page/ricerca-ristoranti-page.module').then(m => m.RicercaRistorantiPageModule),
+    canActivate: [AuthGuard]
   }
 
 ];

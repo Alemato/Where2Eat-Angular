@@ -70,7 +70,6 @@
   "CERCA": "Search:",
   "DATA": "Date:",
   "ORA": "Time:",
-  "POSTID": "Seats:",
   "I_POSTI_SONO_DISPONIBILI": "Places are available",
   "CONFERMA_PRENOTAZIONE": "Would you like to confirm your booking with the following information:",
   "DATI_UTENTE": "User data",
@@ -78,5 +77,26 @@
   "ERROR_MESSAGE_COGNOME": "The surname is",
   "ERROR_MESSAGE_EMAIL": "The email is",
   "ERROR_MESSAGE_TELEFONO": "The telephone number is",
-  "RE_PASSWORD": "Re-Password"
+  "RE_PASSWORD": "Re-Password",
+  "NAME": "Name",
+  "SURNAME": "Surname",
+  "POSTI": "Seats",
+
+  "LOGIN": "Login",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "SE_NON_HAI_UN_ACCOUNT": "If you do not have an account: ",
+  "REGISTRATI": "Sign up",
+  "HAI_GIA_UN_ACCOUNT": "Already have an account? ",
+  "TORNA_ALLA_LOGIN": "Back to login",
+  "DOVE": "Where",
+  "COSA": "What",
+  "MENU": "Menu",
+  "HOME": "Home",
+  "PLACEHOLDER_DOVE": "Ex. L'Aquila, Roma...",
+  "PLACEHOLDER_COSA": "Ex. Restaurant name, type of cooking..."
+
+
+
+
 }

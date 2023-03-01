@@ -139,7 +139,7 @@
   <mat-card-actions *ngIf="prenotazione?.statoPrenotazione === 0 || prenotazione?.statoPrenotazione === 1"
                     class="d-flex justify-content-center mx-2 pt-2">
     <button mat-raised-button color="warn" class="w-100"
-            (click)="openDialogCancell('300ms', '300ms')">{{ "CANCEL_BUTTON" | translate }}
+            (click)="openDialogCancell()">{{ "CANCEL_BUTTON" | translate }}
     </button>
   </mat-card-actions>
 </mat-card>

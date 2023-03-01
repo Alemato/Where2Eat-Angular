@@ -1,13 +1,13 @@
 <form [formGroup]="searchFormModelModal" (ngSubmit)="search()" class="form-dim">
   <h1 mat-dialog-title>{{"RICERCA_RISTORANTE" | translate}}</h1>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
-    <mat-label>Cosa</mat-label>
-    <input id="cosa" type="text" matInput placeholder="Ex. Nome ristorante, tipo di cucina..." formControlName="cosa">
+    <mat-label>{{"COSA" | translate}}</mat-label>
+    <input id="cosa" type="text" matInput placeholder="{{'PLACEHOLDER_COSA' | translate}}" formControlName="cosa">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
-    <mat-label>Dove</mat-label>
-    <input id="dove" type="text" matInput placeholder="Ex. L'Aquila, Roma..." formControlName="dove">
+    <mat-label>{{"DOVE" | translate}}</mat-label>
+    <input id="dove" type="text" matInput placeholder="{{'PLACEHOLDER_DOVE' | translate}}" formControlName="dove">
   </mat-form-field>
   <div class="d-flex justify-content-center py-3">
     <button mat-raised-button type="submit" class="w-75" color="primary">{{"RICERCA_RISTORANTE" | translate}}</button>

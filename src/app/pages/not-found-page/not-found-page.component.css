@@ -4,15 +4,32 @@ div.container {
   margin-top: 10%;
 }
 
-h1 {
-  font-size: 130px;
+div.container > h2 {
+  font-family: 'Anton', sans-serif;
+  padding-top: 20px;
+  font-size: 25px;
+  line-height: 25px;
+  opacity: 0.8;
   margin: 0;
 }
 
-div.container > h2 {
+div.container > h1 {
   font-family: 'Anton', sans-serif;
-  font-size: 70px;
-  line-height: 70px;
+  padding-top: 20px;
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  opacity: 0.8;
+  margin: 0;
+}
+
+div.container > h3 {
+  font-family: 'Anton', sans-serif;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+  line-height: 20px;
   opacity: 0.8;
   margin: 0;
 }

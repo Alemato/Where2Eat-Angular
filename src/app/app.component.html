@@ -12,13 +12,13 @@
     <div class="row col-md-8 d-none d-md-flex">
       <form [formGroup]="searchFormModel" class="" (ngSubmit)="search()">
         <mat-form-field class="mt-4 ms-5 col-6">
-          <mat-label>Cosa</mat-label>
-          <input id="cosa" type="text" matInput placeholder="Ex. Nome ristorante, tipo di cucina..." formControlName="cosa">
+          <mat-label>{{"COSA" | translate}}</mat-label>
+          <input id="cosa" type="text" matInput placeholder="{{'PLACEHOLDER_COSA' | translate}}" formControlName="cosa">
         </mat-form-field>
 
         <mat-form-field class="mt-4 ms-3 me-3 col-6">
-          <mat-label>Dove</mat-label>
-          <input id="dove" type="text" matInput placeholder="Ex. L'Aquila, Roma..." formControlName="dove">
+          <mat-label>{{"DOVE" | translate}}</mat-label>
+          <input id="dove" type="text" matInput placeholder="{{'PLACEHOLDER_DOVE' | translate}}" formControlName="dove">
         </mat-form-field>
         <button  type="submit" class="btn btn-lg btn-light" style="margin-top: -15px;">{{"RICERCA_RISTORANTE" | translate}}</button>
       </form>

@@ -25,11 +25,11 @@ export class PrenotazioneCardComponent {
     this.deletePrenotazioneEvent = new EventEmitter();
   }
 
-  openDialogCancell(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialogCancell(): void {
     const dialogRef = this.dialog.open(PrenotazioneCancelDialogModalComponent, {
-      width: '300px',
-      enterAnimationDuration,
-      exitAnimationDuration,
+      width: '80%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
       data: {idPrenotazione: this.prenotazione?.id}
     });
 

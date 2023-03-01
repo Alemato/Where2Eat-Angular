@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NotFoundPageComponent} from './not-found-page.component';
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink, RouterModule, Routes} from "@angular/router";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatButtonModule,
+    TranslateModule,
     RouterLink
   ]
 })

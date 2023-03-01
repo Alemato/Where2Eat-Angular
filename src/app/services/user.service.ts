@@ -102,7 +102,7 @@ export class UserService {
     return this.http.post<any>(URL.LOGIN, account, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response login');
-        console.log(resp)
+        console.log(resp);
         const token = resp.headers.get(X_AUTH);
         console.log('token dal server');
         console.log(token);

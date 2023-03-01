@@ -22,9 +22,10 @@ export class LoginPageComponent implements OnInit {
     this.loginFormModel = this.formBuilder.group({
       username: ['', [
         Validators.required,
-        Validators.minLength(5),
+        Validators.minLength(6),
         // tslint:disable-next-line:max-line-length
-        Validators.pattern('(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')
+        //Validators.pattern('(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')
+        Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
       ]],
       password: ['', [
         Validators.required,
@@ -40,7 +41,7 @@ export class LoginPageComponent implements OnInit {
   validationMessages = {
     username: [
       {type: 'required', message: 'email is required.'},
-      {type: 'minlength', message: 'email must be at least 5 characters long.'},
+      {type: 'minlength', message: 'email must be at least 6 characters long.'},
       {type: 'pattern', message: 'Your email is invalid'},
       {type: 'incorrect', message: 'is invalid'}
     ],

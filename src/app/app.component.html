@@ -1,4 +1,4 @@
-<div class="flex" *ngIf="(logenIn$ | async); else nonLoggato">
+<div class="flex" *ngIf="isLoggedIn() else nonLoggato">
   <mat-toolbar class="mat-toolbar" color="primary">
     <button *ngIf="!drawer.opened" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
             (click)="drawer.toggle();">
@@ -8,7 +8,7 @@
             (click)="drawer.toggle();">
       <mat-icon>close</mat-icon>
     </button>
-    <a [routerLink]="['/home']" class="text-white text-decoration-none" >{{ title }}</a>
+    <a [routerLink]="['/home']" class="text-white text-decoration-none">{{ title }}</a>
     <div class="row col-md-8 d-none d-md-flex">
       <form [formGroup]="searchFormModel" class="" (ngSubmit)="search()">
         <mat-form-field class="mt-4 ms-5 col-6">
@@ -73,7 +73,7 @@
         </button>
       </p>
     </mat-drawer>
-    <div class="container-fluid col-12 col-md-6" [ngClass]="{'col-12 col-md-6': setContainerCondition()}">
+    <div class="container-fluid" [ngClass]="{'col-12 col-md-6': setContainerCondition()}">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>

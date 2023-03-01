@@ -23,16 +23,15 @@ export interface NewUser {
 })
 export class UserService {
   private authToken: string = '';
-  private loggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private user$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient
+  ) {
     let token: string | null = localStorage.getItem(AUTH_TOKEN);
     if (token !== null && token !== undefined && token !== '') {
       this.authToken = token;
       console.log('this.authToken');
       console.log(this.authToken);
-      this.loggedIn$.next(true);
     }
     let utente: string | null = localStorage.getItem(UTENTE_STORAGE);
     if (utente !== null && utente !== undefined && utente !== '') {
@@ -50,7 +49,7 @@ export class UserService {
   }
 
   /**
-   * Funzione che restituisce il l'oggetto utente
+   * Funzione che restituisce l'Observable dell'oggetto utente
    */
   getUser(): Observable<User> {
     return this.user$.asObservable();
@@ -64,10 +63,35 @@ export class UserService {
   }
 
   /**
-   * Funzione che ritorna Observable della variabile loggedIn che serve per vedere se l'utenza è loggata o meno
+   * Algoritmo di decodifica del exp nel token:
+   * 1. separare il token con i punti e prendere la seconda porzione della stringa
+   * 2. prendere la stringa e decodificare in base 64
+   * 3. prendere l'exp
+   * 4. Calcolare con la data di oggi in ms / 1000 e arrotondare
+   * 5. controllare se ciò che è calcolato è <= di quello ricevuto dal token
+   * @param token
+   * @private
    */
-  isLogged(): Observable<boolean> {
-    return this.loggedIn$.asObservable();
+  private tokenExpired(token: string) {
+    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    return (Math.floor((new Date).getTime() / 1000)) >= expiry;
+  }
+
+  /**
+   * Funzione che ritorna un booleano che serve per vedere se l'utenza è loggata o meno
+   */
+  isAuthenticated(): boolean {
+    let tokenExpired: boolean = false;
+    let token: string | null = localStorage.getItem(AUTH_TOKEN);
+    if (token !== null && token !== undefined && token !== '') {
+      if (this.tokenExpired(token)) {
+        this.logout();
+        tokenExpired = true;
+        return tokenExpired
+      }
+      return !tokenExpired;
+    }
+    return false;
   }
 
   /**
@@ -88,7 +112,6 @@ export class UserService {
         }
         this.editUserLocalData(resp.body);
         this.user$.next(resp.body);
-        this.loggedIn$.next(true);
         console.log('setto loggedIn in loggedIn$');
         console.log(resp);
         return resp.body;
@@ -96,13 +119,12 @@ export class UserService {
   }
 
   /**
-   * Funzione che resetta tutta l'appicazione, usata per il logout dell'utenza.
+   * Funzione che resetta tutta l'applicazione, usata per il logout dell'utenza.
    */
   logout() {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(UTENTE_STORAGE);
     this.authToken = '';
-    this.loggedIn$.next(false);
     this.user$.next({} as User);
   }
 

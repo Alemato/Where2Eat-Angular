@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {LinguaService} from "./services/lingua.service";
 import {UserService} from './services/user.service';
-import {BehaviorSubject, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {Router} from '@angular/router';
 import {User} from "./model/user";
 import {FormBuilder, FormGroup} from "@angular/forms";
@@ -20,7 +20,6 @@ import {
 export class AppComponent {
   title = 'Where2Eat';
   linguaScelta = 'it';
-  logenIn$: Observable<boolean>;
   user$: Observable<User>;
   searchFormModel: FormGroup;
 
@@ -31,7 +30,6 @@ export class AppComponent {
               private formBuilder: FormBuilder,
               private dialog: MatDialog) {
     this.initTranslate();
-    this.logenIn$ = userService.isLogged();
     this.user$ = userService.getUser();
     this.searchFormModel = this.formBuilder.group({
       cosa: ['', []],
@@ -59,6 +57,10 @@ export class AppComponent {
 
   setContainerCondition(): boolean {
     return this.router.url.indexOf("/ristoranti/") <= -1;
+  }
+
+  isLoggedIn(): boolean {
+    return this.userService.isAuthenticated();
   }
 
   logout() {

@@ -19,7 +19,7 @@ export class PrenotazioneCardComponent {
   @Output()
   deletePrenotazioneEvent: EventEmitter<Prenotazione>;
 
-  URL_BASE_IMG = URL_BASE_IMG;
+  urlImmagine: string = URL_BASE_IMG;
 
   constructor(public dialog: MatDialog) {
     this.deletePrenotazioneEvent = new EventEmitter();

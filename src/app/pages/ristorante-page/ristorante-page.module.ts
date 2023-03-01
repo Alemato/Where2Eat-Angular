@@ -21,6 +21,7 @@ import {
   RistorantePrenotazionePrenotaComponent
 } from '../../components/ristorante-prenotazione-prenota/ristorante-prenotazione-prenota.component';
 import {TranslateModule} from "@ngx-translate/core";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 const routes: Routes = [
   {
@@ -50,10 +51,11 @@ const routes: Routes = [
         MatDatepickerModule,
         MatNativeDateModule,
         ReactiveFormsModule,
-        TranslateModule
+        TranslateModule,
+        MatProgressSpinnerModule
     ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'it-IT'},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
   ]
 })
 export class RistorantePageModule { }

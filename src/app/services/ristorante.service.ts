@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Ristorante} from "../model/ristorante";
-import {Observable} from "rxjs";
+import {catchError, Observable, retry, throwError} from "rxjs";
 import {URL} from "../constants";
 import {Ricerca} from "../components/ricerca-ristorante-modal/ricerca-ristorante-modal.component";
 
@@ -14,7 +14,7 @@ export class RistoranteService {
   }
 
   getRestHome(): Observable<Ristorante[]> {
-    return this.http.get<Ristorante[]>(URL.RISTORANTI_HOME, {params: {'view': 'home'}});
+    return this.http.get<Ristorante[]>(URL.RISTORANTI_HOME, {params: {'view': 'home'}}).pipe(retry(3));
   }
 
   getRistoranteByIdRistorante(id: number): Observable<Ristorante> {
@@ -29,5 +29,24 @@ export class RistoranteService {
         return this.http.get<Ristorante[]>(URL.SEARCH, {params: {'dove': ricerca.dove}});
       }
     } else return this.http.get<Ristorante[]>(URL.SEARCH);
+  }
+
+  getOrari(id: number, data: string): Observable<string[]> {
+    return this.http.get<string[]>(URL.RISTORANTE_ID + id + "/orari", {params: {'data': data}}).pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
+    }
+    // return an observable with a user-facing error message
+    return throwError('Something bad happened; please try again later.');
   }
 }

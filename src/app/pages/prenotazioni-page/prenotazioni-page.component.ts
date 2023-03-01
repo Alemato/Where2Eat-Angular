@@ -82,11 +82,9 @@ export class PrenotazioniPageComponent {
         this.loading = false;
         console.log(error);
         if (error.status === 403) {
-          console.error('Prenotazioni request error: ' + error.status);
           window.alert("Errore server 403");
         }
         if (error.status === 500) {
-          console.error('Prenotazioni request error: ' + error.status);
           window.alert("Errore server 500");
         }
       }

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{ "I_POSTI_SONO_DISPONIBILI" | translate }}</h1>
 <div mat-dialog-content>
   <p>{{ "CONFERMA_PRENOTAZIONE" | translate }}</p>
-  <span class="fw-bold">{{ "DATA" | translate }}:</span> {{data.data}} <br>
+  <span class="fw-bold">{{ "DATA" | translate }}:</span> {{data.data | date: "dd/MM/yyyy" }} <br>
   <span class="fw-bold">{{ "ORA" | translate }}:</span> {{data.ora}}<br>
   <span class="fw-bold">{{ "POSTI" | translate }}:</span> {{data.numeroPosti}}
 </div>

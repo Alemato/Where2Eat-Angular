@@ -2,11 +2,6 @@
   <mat-spinner class="loading-spinner"></mat-spinner>
 </div>
 <div *ngIf="prenotazioni">
-  <div *ngIf="prenotazioniFuture == undefined && prenotazioniPassate == undefined; else nonZero">
-    <div class="container-fluid">
-      <p class="mt-2 ms-2 mb-1 py-2 fs-6 fw-bold text-center">{{ "NESSUNA_PRENOTAZIONE" | translate }}</p>
-    </div>
-  </div>
   <div *ngIf="prenotazioni.length == 0; else nonZero">
     <div class="container-fluid">
       <p class="mt-2 ms-2 mb-1 py-2 fs-6 fw-bold text-center">{{ "NESSUNA_PRENOTAZIONE" | translate }}</p>

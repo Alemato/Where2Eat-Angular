@@ -20,12 +20,14 @@ export class RistorantePageComponent implements OnInit {
   private idRistorante: number = -1;
   ristorante?: Ristorante;
   URL_BASE_IMG = URL_BASE_IMG;
+  loading: boolean;
 
   constructor(private router: ActivatedRoute,
               private route: Router,
               private dialog: MatDialog,
               private ristoranteService: RistoranteService
   ) {
+    this.loading = true;
     console.log("Creo Componente pagina Ristorante");
   }
 
@@ -35,7 +37,9 @@ export class RistorantePageComponent implements OnInit {
       this.ristoranteService.getRistoranteByIdRistorante(this.idRistorante).subscribe({
         next: (data) => {
           this.ristorante = data;
+          this.loading = false;
         }, error: (error: HttpErrorResponse) => {
+          this.loading = false;
           if (error.status === 404) {
             console.error('Ristorante Page request error: ' + error.status);
             this.route.navigate(["/404"]);

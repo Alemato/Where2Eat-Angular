@@ -9,64 +9,36 @@
 
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
     <mat-label>{{ "LABEL_DATA" | translate }}</mat-label>
-    <input matInput [matDatepicker]="picker" id="dataPrenotazione" formControlName="dataPrenotazione">
+    <input matInput [matDatepicker]="picker" (dateChange)="getOrari()" id="dataPrenotazione"
+           formControlName="dataPrenotazione">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="verificaForm && verificaForm.get('dataPrenotazione')?.hasError('required')">
       <span>{{ "LABEL_DATA" | translate }} </span><strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
     </mat-error>
-    <mat-error *ngIf="verificaForm?.get('dataPrenotazione')?.hasError('dateError')">
+    <mat-error *ngIf="verificaForm.get('dataPrenotazione')?.hasError('dateError')">
       <span>{{ "LABEL_DATA" | translate }} </span><strong>{{ "ERROR_MESSAGE_PASSATA" | translate }}</strong>
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
     <mat-label>{{ "LABEL_ORA" | translate }}</mat-label>
     <mat-select id="oraPrenotazione" formControlName="oraPrenotazione">
-      <mat-option value="12:00">12:00</mat-option>
-      <mat-option value="12:15">12:15</mat-option>
-      <mat-option value="12:30">12:30</mat-option>
-      <mat-option value="12:45">12:45</mat-option>
-      <mat-option value="13:00">13:00</mat-option>
-      <mat-option value="13:15">13:15</mat-option>
-      <mat-option value="13:30">13:30</mat-option>
-      <mat-option value="13:45">13:45</mat-option>
-      <mat-option value="14:00">14:00</mat-option>
-      <mat-option value="14:15">14:15</mat-option>
-      <mat-option value="14:30">14:30</mat-option>
-      <mat-option value="14:45">14:45</mat-option>
-      <mat-option value="15:00">15:00</mat-option>
-      <mat-option value="15:15">15:15</mat-option>
-      <mat-option value="15:30">15:30</mat-option>
-      <mat-option value="15:45">15:45</mat-option>
-      <mat-option value="16:00">16:00</mat-option>
-      <mat-option value="19:00">19:00</mat-option>
-      <mat-option value="19:15">19:15</mat-option>
-      <mat-option value="19:30">19:30</mat-option>
-      <mat-option value="19:45">19:45</mat-option>
-      <mat-option value="20:00">20:00</mat-option>
-      <mat-option value="20:15">20:15</mat-option>
-      <mat-option value="20:30">20:30</mat-option>
-      <mat-option value="20:45">20:45</mat-option>
-      <mat-option value="21:00">21:00</mat-option>
-      <mat-option value="21:15">21:15</mat-option>
-      <mat-option value="21:30">21:30</mat-option>
-      <mat-option value="21:45">21:45</mat-option>
-      <mat-option value="22:15">22:00</mat-option>
+      <mat-option *ngFor="let ora of orari" [value]="ora">{{ ora }}</mat-option>
     </mat-select>
-    <mat-error *ngIf="verificaForm?.get('oraPrenotazione')?.hasError('required')">
+    <mat-error *ngIf="orari.length > 0 && verificaForm.get('oraPrenotazione')?.hasError('required')">
       {{ "ERROR_MESSAGE_ORA" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
     </mat-error>
-    <mat-error *ngIf="verificaForm?.get('oraPrenotazione')?.hasError('pattern')">
+    <mat-error *ngIf="orari.length > 0 && verificaForm.get('oraPrenotazione')?.hasError('pattern')">
       {{ "ERROR_MESSAGE_VALORE" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
     <mat-label>{{ "LABEL_POSTI" | translate }}</mat-label>
     <input type="number" matInput id="postiPrenotazione" formControlName="postiPrenotazione">
-    <mat-error *ngIf="verificaForm?.get('postiPrenotazione')?.hasError('required')">
+    <mat-error *ngIf="verificaForm.get('postiPrenotazione')?.hasError('required')">
       {{ "ERROR_MESSAGE_POSTI" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
     </mat-error>
-    <mat-error *ngIf="verificaForm?.get('postiPrenotazione')?.hasError('pattern')">
+    <mat-error *ngIf="verificaForm.get('postiPrenotazione')?.hasError('pattern')">
       {{ "ERROR_MESSAGE_VALORE" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
     </mat-error>
   </mat-form-field>

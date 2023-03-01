@@ -21,11 +21,18 @@ export class RegistrazionePageComponent {
       {
         nome: ['', Validators.required],
         cognome: ['', Validators.required],
-        email: ['', [Validators.required, Validators.minLength(5), Validators.pattern('(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@([a-zA-Z]*.[!-~a-zA-Z]*)$')]],
-        telefono: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(9), Validators.maxLength(10)]],
-        password: ['', [ Validators.required, Validators.minLength(4)]]
+        email: ['', [Validators.required,
+          Validators.minLength(5),
+          Validators.pattern('(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]],
+        telefono: ['', [Validators.required,
+          Validators.pattern('[0-9]+'),
+          Validators.minLength(9),
+          Validators.maxLength(10)]],
+        password: ['', [Validators.required,
+          Validators.minLength(4)]]
       });
   }
+
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
@@ -39,8 +46,7 @@ export class RegistrazionePageComponent {
         next: (data) => {
           this.router.navigate(['/login']);
         },
-        error: (error: HttpErrorResponse) =>
-        {
+        error: (error: HttpErrorResponse) => {
           if (error.status === 500) {
             console.error('registrazione request error: ' + error.status);
             window.alert("Errore server 500");

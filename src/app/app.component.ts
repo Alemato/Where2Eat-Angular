@@ -21,7 +21,7 @@ export class AppComponent {
   title = 'Where2Eat';
   linguaScelta = 'it';
   logenIn$: Observable<boolean>;
-  user$: BehaviorSubject<User>;
+  user$: Observable<User>;
   searchFormModel: FormGroup;
 
   constructor(private translate: TranslateService,
@@ -58,7 +58,7 @@ export class AppComponent {
   }
 
   setContainerCondition(): boolean {
-    return !(this.router.url.indexOf("/ristoranti/") > -1);
+    return this.router.url.indexOf("/ristoranti/") <= -1;
   }
 
   logout() {

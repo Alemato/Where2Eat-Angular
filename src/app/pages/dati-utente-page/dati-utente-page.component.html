@@ -1,4 +1,7 @@
-<div class="container-fluid" *ngIf="(this.user$ | async) as user">
+<div [hidden]="!loading" class="loading-container pt-5">
+  <mat-spinner class="loading-spinner"></mat-spinner>
+</div>
+<div class="container-fluid">
   <form [formGroup]="utenteForm" class="utente-form p-3 p-md-5" (ngSubmit)="salvaDati()">
     <h2 class="text-center pb-4">{{"DATI_UTENTE" | translate}}</h2>
 
@@ -17,19 +20,6 @@
       <input type="text" matInput id="cognome" formControlName="cognome">
       <mat-error *ngIf="utenteForm.get('cognome')?.hasError('required')">
         {{ "ERROR_MESSAGE_COGNOME" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="mb-4">
-      <mat-label>Email</mat-label>
-      <input type="text" matInput id="email" formControlName="email">
-      <mat-error
-        *ngIf="utenteForm.get('email')?.hasError('required')">
-        {{ "ERROR_MESSAGE_EMAIL" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
-      </mat-error>
-      <mat-error
-        *ngIf="utenteForm.get('email')?.hasError('pattern')">
-        {{ "EMAIL" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTA" | translate }}</strong>
       </mat-error>
     </mat-form-field>
 

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from "../constants";
-import {BehaviorSubject, catchError, map, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, retry, tap, throwError} from "rxjs";
 import {User} from "../model/user";
 
 export interface Account {
@@ -50,10 +50,17 @@ export class UserService {
   }
 
   /**
-   * Funzione che restituisce il BehaviorSubject dell'oggetto dell'utenza
+   * Funzione che restituisce il l'oggetto utente
    */
-  getUser(): BehaviorSubject<User> {
-    return this.user$;
+  getUser(): Observable<User> {
+    return this.user$.asObservable();
+  }
+
+  getUserFromServer(): Observable<User> {
+    return this.http.get<User>(URL.ACCOUNT).pipe(tap((user: User) => {
+      this.user$.next(user);
+      this.editUserLocalData(user);
+    }), retry(3), catchError(this.handleError));
   }
 
   /**
@@ -79,7 +86,7 @@ export class UserService {
           localStorage.setItem(AUTH_TOKEN, token);
           this.authToken = token;
         }
-        localStorage.setItem(UTENTE_STORAGE, JSON.stringify(resp.body));
+        this.editUserLocalData(resp.body);
         this.user$.next(resp.body);
         this.loggedIn$.next(true);
         console.log('setto loggedIn in loggedIn$');
@@ -107,6 +114,8 @@ export class UserService {
   editUserData(user: User): Observable<any> {
     return this.http.patch<any>(URL.ACCOUNT, user, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
+        console.log('response modifica utente');
+        console.log(resp)
       }));
   }
 
@@ -114,7 +123,7 @@ export class UserService {
     return this.http.post<any>(URL.ACCOUNT, newUser, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response registrazione utente');
-        console.log(resp.body)
+        console.log(resp)
       }));
   }
 

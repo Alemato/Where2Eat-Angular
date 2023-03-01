@@ -3,7 +3,6 @@ export interface User {
   nome: string;
   cognome: string;
   statoAccount: boolean;
-  ruolo: string;
   email: string;
   telefono: string;
 }

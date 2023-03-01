@@ -1,4 +1,4 @@
-<div class="flex" *ngIf="(logenIn$ | async)">
+<div class="flex" *ngIf="(logenIn$ | async); else nonLoggato">
   <mat-toolbar class="mat-toolbar" color="primary">
     <button *ngIf="!drawer.opened" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
             (click)="drawer.toggle();">
@@ -78,7 +78,9 @@
     </div>
   </mat-drawer-container>
 </div>
+<ng-template #nonLoggato>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
 
-<div *ngIf="!(logenIn$ | async)">
-  <router-outlet></router-outlet>
-</div>

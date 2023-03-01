@@ -43,7 +43,12 @@ const routes: Routes = [
     path: 'datiutente',
     loadChildren: () => import('./pages/dati-utente-page/dati-utente-page.module').then(m => m.DatiUtentePageModule),
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: '404',
+    loadChildren: () => import('./pages/not-found-page/not-found-page.module').then(m => m.NotFoundPageModule),
+  },
+  {path: '**', redirectTo: '/404'}
 
 ];
 

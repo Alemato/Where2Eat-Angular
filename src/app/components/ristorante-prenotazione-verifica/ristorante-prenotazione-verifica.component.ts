@@ -10,6 +10,8 @@ import {PrenotazioneService} from "../../services/prenotazione.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {RistoranteService} from "../../services/ristorante.service";
 import {TranslateService} from "@ngx-translate/core";
+import {DateAdapter} from "@angular/material/core";
+import {LinguaService} from "../../services/lingua.service";
 
 @Component({
   selector: 'app-ristorante-prenotazione-verifica',
@@ -32,8 +34,11 @@ export class RistorantePrenotazioneVerificaComponent {
               private dialog: MatDialog,
               private prenotazioneService: PrenotazioneService,
               private ristoranteService: RistoranteService,
-              private translateService: TranslateService
+              private translateService: TranslateService,
+              private linguaService: LinguaService,
+              private dateAdapter: DateAdapter<any>
   ) {
+    this.dateAdapter.setLocale(this.linguaService.getLinguaAttuale());
     this.verificaForm = this.fb.group({
       dataPrenotazione: ['', [Validators.required, CustomValidators.dataPrenotazioneValid]],
       oraPrenotazione: [{value: '', disabled: true}, [Validators.required, Validators.pattern('\\d\\d:\\d\\d')]],

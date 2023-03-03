@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LINGUA} from "../constants";
 
 export interface Lingua {
@@ -23,7 +23,7 @@ export class LinguaService {
   }
 
   getLinguaAttuale(): string {
-    let linguaStr: string | null =  localStorage.getItem(LINGUA);
+    let linguaStr: string | null = localStorage.getItem(LINGUA);
     if (linguaStr == null || linguaStr == '') {
       localStorage.setItem(LINGUA, "it");
       return "it";

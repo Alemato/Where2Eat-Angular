@@ -139,7 +139,7 @@ export class UserService {
       map((resp: HttpResponse<any>) => {
         console.log('response modifica utente');
         console.log(resp)
-      }));
+      }), catchError(this.handleError));
   }
 
   registration(newUser: NewUser): Observable<any> {
@@ -147,7 +147,7 @@ export class UserService {
       map((resp: HttpResponse<any>) => {
         console.log('response registrazione utente');
         console.log(resp)
-      }));
+      }), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -158,11 +158,11 @@ export class UserService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+        `Backend returned code ${error.status}, Body:`
       );
+      console.error(error.error);
     }
-    // return an observable with a user-facing error message
-    // return throwError(() => new ErrorEvent("Something bad happened; please try again later"));
+    // return an observable error
     return throwError(() => error);
   }
 }

@@ -46,16 +46,16 @@ export class RicercaRistorantiPageComponent implements OnInit {
           this.loading = false;
         },
         error: (error: HttpErrorResponse) => {
+          if (error.status === 500) {
+            console.error('Ricerca Ristoranti Page request error: ' + error.status);
+            window.alert("Errore server 500");
+          }
+          this.loading = false;
           if (error.status === 403) {
             console.error('Ricerca Ristoranti Page request error: ' + error.status);
             window.alert("Accesso negato");
             this.userService.logout();
             this.router.navigate(["/login"]);
-          }
-          if (error.status === 500) {
-            console.error('Ricerca Ristoranti Page request error: ' + error.status);
-            window.alert("Errore server 500");
-            this.loading = false;
           }
         }
       })

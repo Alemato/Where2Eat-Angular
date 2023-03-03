@@ -46,12 +46,15 @@ export class PrenotazioniPageComponent {
         this.loading = false;
       },
       error: (error: HttpErrorResponse) => {
-        this.loading = false;
-        console.log(error);
         if (error.status === 400) {
           console.error('Delete Prenotazione request error: ' + error.status);
           window.alert("Errore server 400");
         }
+        if (error.status === 500) {
+          console.error('Delete Prenotazione request error: ' + error.status);
+          window.alert("Errore server 500");
+        }
+        this.loading = false;
         if (error.status === 403) {
           console.error('Delete Prenotazione request error: ' + error.status);
           window.alert("Accesso negato");
@@ -62,10 +65,6 @@ export class PrenotazioniPageComponent {
           console.error('Delete Prenotazione request error: ' + error.status);
           window.alert("Errore server 404");
           this.router.navigate(["/404"]);
-        }
-        if (error.status === 500) {
-          console.error('Delete Prenotazione request error: ' + error.status);
-          window.alert("Errore server 500");
         }
       }
     });

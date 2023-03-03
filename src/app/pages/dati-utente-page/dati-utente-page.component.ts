@@ -4,6 +4,7 @@ import {User} from "../../model/user";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-dati-utente-page',
@@ -18,7 +19,8 @@ export class DatiUtentePageComponent {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private translateService: TranslateService) {
     this.loading = true;
     this.utenteForm = this.formBuilder.group(
       {
@@ -29,6 +31,7 @@ export class DatiUtentePageComponent {
   }
 
   ngOnInit() {
+    this.initTranslate();
     this.userService.getUserFromServer().subscribe({
       next: user => {
         this.user = user;
@@ -50,6 +53,42 @@ export class DatiUtentePageComponent {
         }
       }
     })
+  }
+
+  validationMessages = {
+    nome: [
+      {type: 'required', message: 'Name is required'},
+    ],
+    cognome: [
+      {type: 'required', message: 'Name is required'},
+    ],
+    telefono: [
+      {type: 'required', message: 'Telephone number is required'},
+      {type: 'pattern', message: 'Telephone number is invalid'},
+      {type: 'minLength', message: 'Telephone number is invalid'},
+      {type: 'maxLength', message: 'Telephone number is invalid'},
+    ]
+  };
+
+  initTranslate() {
+    this.translateService.get('NOME_RICHIESTO_MESSAGE').subscribe((data) => {
+      this.validationMessages.nome[0].message = data;
+    });
+    this.translateService.get('COGNOME_RICHIESTO_MESSAGE').subscribe((data) => {
+      this.validationMessages.cognome[0].message = data;
+    });
+    this.translateService.get('TELEFONO_RICHIESTO_MESSAGE').subscribe((data) => {
+      this.validationMessages.telefono[0].message = data;
+    });
+    this.translateService.get('TELEFONO_NON_CORRETTO_MESSAGE').subscribe((data) => {
+      this.validationMessages.telefono[1].message = data;
+    });
+    this.translateService.get('TELEFONO_NON_CORRETTO_MESSAGE').subscribe((data) => {
+      this.validationMessages.telefono[2].message = data;
+    });
+    this.translateService.get('TELEFONO_NON_CORRETTO_MESSAGE').subscribe((data) => {
+      this.validationMessages.telefono[3].message = data;
+    });
   }
 
   salvaDati(): void {

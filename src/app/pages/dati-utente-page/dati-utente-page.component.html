@@ -10,29 +10,36 @@
       <input type="text" matInput id="nome" formControlName="nome">
       <mat-error
         *ngIf="utenteForm.get('nome')?.hasError('required')">
-        {{ "ERROR_MESSAGE_NOME" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
+        {{validationMessages.nome[0].message}}
       </mat-error>
     </mat-form-field>
 
 
     <mat-form-field class="mb-4">
-      <mat-label>Cognome</mat-label>
+      <mat-label>{{"SURNAME" | translate}}</mat-label>
       <input type="text" matInput id="cognome" formControlName="cognome">
       <mat-error *ngIf="utenteForm.get('cognome')?.hasError('required')">
-        {{ "ERROR_MESSAGE_COGNOME" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
+        {{validationMessages.cognome[0].message}}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="mb-4">
-      <mat-label>Telefono</mat-label>
+      <mat-label>{{"NUMERO_DI_TELEFONO" | translate}}</mat-label>
       <input type="text" matInput id="telefono" formControlName="telefono">
-      <mat-error
-        *ngIf="utenteForm.get('telefono')?.hasError('required')">
-        {{ "ERROR_MESSAGE_TELEFONO" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTO" | translate }}</strong>
+      <mat-error *ngIf="utenteForm.get('telefono')?.hasError('required')">
+        {{validationMessages.telefono[0].message}}
       </mat-error>
       <mat-error
         *ngIf="utenteForm.get('telefono')?.hasError('pattern')">
-        {{ "NUMERO_DI_TELEFONO" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
+        {{validationMessages.telefono[1].message}}
+      </mat-error>
+      <mat-error
+        *ngIf="utenteForm.get('telefono')?.hasError('minLength')">
+        {{validationMessages.telefono[2].message}}
+      </mat-error>
+      <mat-error
+        *ngIf="utenteForm.get('telefono')?.hasError('maxLength')">
+        {{validationMessages.telefono[3].message}}
       </mat-error>
     </mat-form-field>
 

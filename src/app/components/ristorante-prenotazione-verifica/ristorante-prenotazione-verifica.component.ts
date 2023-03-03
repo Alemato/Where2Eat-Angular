@@ -9,6 +9,7 @@ import {CustomValidators} from "../../validators/custom-validators";
 import {PrenotazioneService} from "../../services/prenotazione.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {RistoranteService} from "../../services/ristorante.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-ristorante-prenotazione-verifica',
@@ -30,12 +31,53 @@ export class RistorantePrenotazioneVerificaComponent {
               private dialogRef: MatDialogRef<RistorantePrenotazioneVerificaComponent>,
               private dialog: MatDialog,
               private prenotazioneService: PrenotazioneService,
-              private ristoranteService: RistoranteService
+              private ristoranteService: RistoranteService,
+              private translateService: TranslateService
   ) {
     this.verificaForm = this.fb.group({
       dataPrenotazione: ['', [Validators.required, CustomValidators.dataPrenotazioneValid]],
       oraPrenotazione: [{value: '', disabled: true}, [Validators.required, Validators.pattern('\\d\\d:\\d\\d')]],
       postiPrenotazione: [{value: '', disabled: true}, [Validators.required, Validators.pattern('[0-9]+')]]
+    });
+  }
+
+  onOnInit(): void {
+    this.initTranslate();
+  }
+
+  validationMessages = {
+    dataPrenotazione: [
+      {type: 'required', message: 'Date is required'},
+      {type: 'pattern', message: 'Date is passed'},
+    ],
+    oraPrenotazione: [
+      {type: 'required', message: 'Time is required'},
+      {type: 'pattern', message: 'Time is invalid'},
+    ],
+    postiPrenotazione: [
+      {type: 'required', message: 'Seat number is required'},
+      {type: 'dateError', message: 'Seat number is invalid'},
+    ]
+  };
+
+  initTranslate() {
+    this.translateService.get('DATA_RICHIESTA_MESSAGE').subscribe((data) => {
+      this.validationMessages.dataPrenotazione[0].message = data;
+    });
+    this.translateService.get('DATA_PASSATA_MESSAGE').subscribe((data) => {
+      this.validationMessages.dataPrenotazione[1].message = data;
+    });
+    this.translateService.get('ORA_RICHIESTA_MESSAGE').subscribe((data) => {
+      this.validationMessages.oraPrenotazione[0].message = data;
+    });
+    this.translateService.get('ORA_NON_CORRETTA_MESSAGE').subscribe((data) => {
+      this.validationMessages.oraPrenotazione[1].message = data;
+    });
+    this.translateService.get('POSTI_RICHIESTI_MESSAGE').subscribe((data) => {
+      this.validationMessages.postiPrenotazione[0].message = data;
+    });
+    this.translateService.get('POSTI_NON_CORRETTI_MESSAGE').subscribe((data) => {
+      this.validationMessages.postiPrenotazione[1].message = data;
     });
   }
 

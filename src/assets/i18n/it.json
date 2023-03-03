@@ -81,7 +81,6 @@
   "NAME": "Nome",
   "SURNAME": "Cognome",
   "INDIRIZZO": "Indirizzo",
-
   "LOGIN": "Login",
   "USERNAME": "Username",
   "PASSWORD": "Password",
@@ -94,5 +93,15 @@
   "MENU": "Menù",
   "HOME": "Home",
   "PLACEHOLDER_DOVE": "Ex. L'Aquila, Roma...",
-  "PLACEHOLDER_COSA": "Ex. Nome ristorante, tipo di cucina..."
+  "PLACEHOLDER_COSA": "Ex. Nome ristorante, tipo di cucina...",
+  "DATA_RICHIESTA_MESSAGE": "La data è richiesta",
+  "DATA_PASSATA_MESSAGE": "La data è passata",
+  "ORA_RICHIESTA_MESSAGE": "L'ora è richiesta",
+  "ORA_NON_CORRETTA_MESSAGE": "Ora non corretta",
+  "POSTI_RICHIESTI_MESSAGE": "Il numero dei posti è richiesto",
+  "POSTI_NON_CORRETTI_MESSAGE": "Numero posti non corretto",
+  "NOME_RICHIESTO_MESSAGE": "Il nome è richiesto",
+  "COGNOME_RICHIESTO_MESSAGE": "Il cognome è richiesto",
+  "TELEFONO_RICHIESTO_MESSAGE": "Il numero di telefono è richiesto",
+  "TELEFONO_NON_CORRETTO_MESSAGE": "Numero di telefono non corretto"
 }

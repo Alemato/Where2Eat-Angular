@@ -81,7 +81,6 @@
   "NAME": "Name",
   "SURNAME": "Surname",
   "POSTI": "Seats",
-
   "LOGIN": "Login",
   "USERNAME": "Username",
   "PASSWORD": "Password",
@@ -94,9 +93,15 @@
   "MENU": "Menu",
   "HOME": "Home",
   "PLACEHOLDER_DOVE": "Ex. L'Aquila, Roma...",
-  "PLACEHOLDER_COSA": "Ex. Restaurant name, type of cooking..."
-
-
-
-
+  "PLACEHOLDER_COSA": "Ex. Restaurant name, type of cooking...",
+  "DATA_RICHIESTA_MESSAGE": "Date is required",
+  "DATA_PASSATA_MESSAGE": "Date is passed",
+  "ORA_RICHIESTA_MESSAGE": "Time is required",
+  "ORA_NON_CORRETTA_MESSAGE": "Time is invalid",
+  "POSTI_RICHIESTI_MESSAGE": "Seat number is required",
+  "POSTI_NON_CORRETTI_MESSAGE": "Seat number is invalid",
+  "NOME_RICHIESTO_MESSAGE": "Name is required",
+  "COGNOME_RICHIESTO_MESSAGE": "Name is required",
+  "TELEFONO_RICHIESTO_MESSAGE": "Telephone number is required",
+  "TELEFONO_NON_CORRETTO_MESSAGE": "Telephone number is invalid"
 }

@@ -13,11 +13,11 @@
            formControlName="dataPrenotazione">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="verificaForm && verificaForm.get('dataPrenotazione')?.hasError('required')">
-      <span>{{ "LABEL_DATA" | translate }} </span><strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
+    <mat-error *ngIf="verificaForm.get('dataPrenotazione')?.hasError('required')">
+      {{validationMessages.dataPrenotazione[0].message}}
     </mat-error>
     <mat-error *ngIf="verificaForm.get('dataPrenotazione')?.hasError('dateError')">
-      <span>{{ "LABEL_DATA" | translate }} </span><strong>{{ "ERROR_MESSAGE_PASSATA" | translate }}</strong>
+      {{validationMessages.dataPrenotazione[1].message}}
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
@@ -26,20 +26,20 @@
       <mat-option *ngFor="let ora of orari" [value]="ora">{{ ora }}</mat-option>
     </mat-select>
     <mat-error *ngIf="orari.length > 0 && verificaForm.get('oraPrenotazione')?.hasError('required')">
-      {{ "ERROR_MESSAGE_ORA" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
+      {{validationMessages.oraPrenotazione[0].message}}
     </mat-error>
     <mat-error *ngIf="orari.length > 0 && verificaForm.get('oraPrenotazione')?.hasError('pattern')">
-      {{ "ERROR_MESSAGE_VALORE" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
+      {{validationMessages.oraPrenotazione[1].message}}
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" class="data-pick-dim input-margin input-margin-sm pb-2">
     <mat-label>{{ "LABEL_POSTI" | translate }}</mat-label>
     <input type="number" matInput id="postiPrenotazione" formControlName="postiPrenotazione">
     <mat-error *ngIf="verificaForm.get('postiPrenotazione')?.hasError('required')">
-      {{ "ERROR_MESSAGE_POSTI" | translate }} <strong>{{ "ERROR_MESSAGE_RICHIESTA" | translate }}</strong>
+      {{validationMessages.postiPrenotazione[0].message}}
     </mat-error>
     <mat-error *ngIf="verificaForm.get('postiPrenotazione')?.hasError('pattern')">
-      {{ "ERROR_MESSAGE_VALORE" | translate }} <strong>{{ "ERROR_MESSAGE_NON_CORRETTO" | translate }}</strong>
+      {{validationMessages.postiPrenotazione[1].message}}
     </mat-error>
   </mat-form-field>
   <div class="d-flex justify-content-center py-3">

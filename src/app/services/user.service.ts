@@ -110,13 +110,12 @@ export class UserService {
         if (token != null || token != undefined) {
           localStorage.setItem(AUTH_TOKEN, token);
           this.authToken = token;
+          this.editUserLocalData(resp.body);
+        } else {
+          window.alert("Errore durante l'autenticazione");
         }
-        this.editUserLocalData(resp.body);
-        this.user$.next(resp.body);
-        console.log('setto loggedIn in loggedIn$');
-        console.log(resp);
         return resp.body;
-      }), catchError(this.handleError));
+      }), retry(3), catchError(this.handleError));
   }
 
   /**
@@ -131,6 +130,7 @@ export class UserService {
 
   editUserLocalData(user: User) {
     localStorage.setItem(UTENTE_STORAGE, JSON.stringify(user));
+    console.log('setto loggedIn in loggedIn$');
     this.user$.next(user);
   }
 
@@ -139,7 +139,7 @@ export class UserService {
       map((resp: HttpResponse<any>) => {
         console.log('response modifica utente');
         console.log(resp)
-      }), catchError(this.handleError));
+      }), retry(3), catchError(this.handleError));
   }
 
   registration(newUser: NewUser): Observable<any> {
@@ -147,7 +147,7 @@ export class UserService {
       map((resp: HttpResponse<any>) => {
         console.log('response registrazione utente');
         console.log(resp)
-      }), catchError(this.handleError));
+      }), retry(3), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -14,25 +14,30 @@ export class RistoranteService {
   }
 
   getRestHome(): Observable<Ristorante[]> {
-    return this.http.get<Ristorante[]>(URL.RISTORANTI_HOME, {params: {'view': 'home'}}).pipe(retry(3));
+    return this.http.get<Ristorante[]>(URL.RISTORANTI_HOME, {params: {'view': 'home'}}).pipe(retry(3), catchError(this.handleError));
   }
 
   getRistoranteByIdRistorante(id: number): Observable<Ristorante> {
-    return this.http.get<Ristorante>(URL.RISTORANTE_ID + id);
+    return this.http.get<Ristorante>(URL.RISTORANTE_ID + id).pipe(retry(3), catchError(this.handleError));
   }
 
   getRicercaRistorantiByRicerca(ricerca: Ricerca): Observable<Ristorante[]> {
     if (ricerca.dove != null || ricerca.dove != undefined) {
       if (ricerca.cosa != null || ricerca.cosa != undefined) {
-        return this.http.get<Ristorante[]>(URL.SEARCH, {params: {'cosa': ricerca.cosa, 'dove': ricerca.dove}});
+        return this.http.get<Ristorante[]>(URL.SEARCH, {
+          params: {
+            'cosa': ricerca.cosa,
+            'dove': ricerca.dove
+          }
+        }).pipe(retry(3), catchError(this.handleError));
       } else {
-        return this.http.get<Ristorante[]>(URL.SEARCH, {params: {'dove': ricerca.dove}});
+        return this.http.get<Ristorante[]>(URL.SEARCH, {params: {'dove': ricerca.dove}}).pipe(retry(3), catchError(this.handleError));
       }
-    } else return this.http.get<Ristorante[]>(URL.SEARCH);
+    } else return this.http.get<Ristorante[]>(URL.SEARCH).pipe(retry(3), catchError(this.handleError));
   }
 
   getOrari(id: number, data: string): Observable<string[]> {
-    return this.http.get<string[]>(URL.RISTORANTE_ID + id + "/orari", {params: {'data': data}}).pipe(catchError(this.handleError));
+    return this.http.get<string[]>(URL.RISTORANTE_ID + id + "/orari", {params: {'data': data}}).pipe(retry(3), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -15,7 +15,7 @@ export class PrenotazioneService {
   }
 
   getAllPrenotazioniUser(): Observable<Prenotazione[]> {
-    return this.http.get<Prenotazione[]>(URL.PRENOTAZIONI_CLIENTE);
+    return this.http.get<Prenotazione[]>(URL.PRENOTAZIONI_CLIENTE).pipe(retry(3), catchError(this.handleError));
   }
 
   cancelPrenotazione(prenotazione: Prenotazione): Observable<any> {
@@ -25,7 +25,7 @@ export class PrenotazioneService {
       map((resp: HttpResponse<any>) => {
         console.log('response cancel prenotazione');
         console.log(resp)
-      }));
+      }), retry(3), catchError(this.handleError));
   }
 
   verificarPrenotazione(idRistorante: number, data: string, ora: string, numeroPosti: number): Observable<any> {
@@ -53,7 +53,7 @@ export class PrenotazioneService {
       map((resp: HttpResponse<any>) => {
         console.log('response create prenotazione');
         console.log(resp.body)
-      }));
+      }), retry(3), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -7,7 +7,9 @@ import {MatCardModule} from "@angular/material/card";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
-import {ShareCustomComponentModule} from "../../components/share-custom-component/share-custom-component.module";
+import {
+  SharedRistoranteCardComponentModule
+} from "../../components/shared-ristorante-card-component/shared-ristorante-card-component.module";
 
 const routes: Routes = [  {    path: '',    component: HomePageComponent  }];
 
@@ -23,7 +25,7 @@ const routes: Routes = [  {    path: '',    component: HomePageComponent  }];
     TranslateModule,
     MatButtonModule,
     MatDividerModule,
-    ShareCustomComponentModule
+    SharedRistoranteCardComponentModule
   ]
 })
 export class HomePageModule { }

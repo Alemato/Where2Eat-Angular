@@ -1,10 +1,10 @@
 <div [hidden]="!loading" class="loading-container pt-5">
   <mat-spinner class="loading-spinner"></mat-spinner>
 </div>
-<div class="content" *ngIf="ristorante as ristorante">
+<div class="content" *ngIf="ristorante">
   <div class="container-fluid">
     <img alt="" class="img-fluid col-12 col-md-4 d-block mx-auto"
-         [src]="URL_BASE_IMG + ristorante.immagini[0].path">
+         [src]="urlImmagine + ristorante.immagini[0].path">
     <mat-divider></mat-divider>
     <div class="row justify-content-between py-0 py-md-3">
       <h1 class="col-auto mt-3 ps-3 mb-2" style="font-weight: 500!important;">{{ristorante.ragioneSociale}}</h1>
@@ -38,8 +38,9 @@
               <p><span class="text-muted me-2">{{"METODI_DI_PAGAMENTO" | translate}}: </span> <span
                 *ngFor="let metodo of ristorante.metodiPagamento; last as isLast;">{{metodo.nome}} {{!isLast ? '/ ' : ''}}</span>
               </p>
-              <p><span class="text-muted me-2">{{"VOTO" | translate}}: </span> <span>{{"NUMERO_DI_RECENSIONI" | translate}} {{ristorante.recensioni.length}}
-                {{"CON_MEDIA" | translate}}</span> {{getAverage(ristorante.recensioni)}}</p>
+              <p><span class="text-muted me-2">{{"VOTO" | translate}}: </span>
+                <span>{{"NUMERO_DI_RECENSIONI" | translate}} {{ristorante.recensioni.length}}
+                  {{"CON_MEDIA" | translate}}</span> {{ristorante.recensioni | recensioniAverageRank}}</p>
             </div>
           </div>
         </mat-expansion-panel>
@@ -73,7 +74,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="row mb-3" (click)="acc3.toggle()"
-               *ngIf="splitServiziQuattroColonne(ristorante.servizi) as quattroColonne">
+               *ngIf="ristorante.servizi | splitServiziQuattroColonne as quattroColonne">
             <div class="col-12 col-md-3" *ngIf="quattroColonne[0] as servizi">
               <mat-list class="pt-0">
                 <mat-list-item *ngFor="let s of servizi">

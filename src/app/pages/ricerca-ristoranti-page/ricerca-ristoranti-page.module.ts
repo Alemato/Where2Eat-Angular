@@ -3,10 +3,12 @@ import {CommonModule} from '@angular/common';
 import {RicercaRistorantiPageComponent} from './ricerca-ristoranti-page.component';
 import {RouterModule, Routes} from "@angular/router";
 import {MatDividerModule} from "@angular/material/divider";
-import {ShareCustomComponentModule} from "../../components/share-custom-component/share-custom-component.module";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {
+  SharedRistoranteCardComponentModule
+} from "../../components/shared-ristorante-card-component/shared-ristorante-card-component.module";
 
 const routes: Routes = [{path: '', component: RicercaRistorantiPageComponent}];
 
@@ -19,7 +21,7 @@ const routes: Routes = [{path: '', component: RicercaRistorantiPageComponent}];
     CommonModule,
     RouterModule.forChild(routes),
     MatDividerModule,
-    ShareCustomComponentModule,
+    SharedRistoranteCardComponentModule,
     MatProgressSpinnerModule,
     TranslateModule,
     MatPaginatorModule,

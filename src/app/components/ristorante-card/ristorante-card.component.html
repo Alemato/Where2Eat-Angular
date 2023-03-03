@@ -1,10 +1,12 @@
 <div *ngIf="(ristorante) as ristorante" class="my-3">
 <mat-card class="example-card">
-  <img mat-card-image class="rounded-top" [src]="URL_BASE_IMG + ristorante.immagini[0].path" src="https://smarty.stepofweb.com/5.0.4/html_frontend/demo.files/images/unsplash/restaurant/dieny-portinanni-KrjjVGFb6L0-unsplash-min.jpg" alt="Ristornate 1">
+  <img mat-card-image class="rounded-top" [src]="urlImmagine + ristorante.immagini[0].path"
+       src="https://smarty.stepofweb.com/5.0.4/html_frontend/demo.files/images/unsplash/restaurant/dieny-portinanni-KrjjVGFb6L0-unsplash-min.jpg"
+       alt="Ristornate 1">
   <mat-card-content class="py-3">
     <div class="row justify-content-between">
       <h1 class="col-auto">{{ristorante.ragioneSociale}}</h1>
-      <h2 class="col-auto">{{getAverage(ristorante.recensioni)}}</h2>
+      <h2 class="col-auto">{{ristorante.recensioni | recensioniAverageRank}}</h2>
     </div>
     <div class="row">
       <h5 class="col-auto">{{ristorante.tipologiaCucina[0].nome}}</h5><h5 class="col-auto p-0">•</h5><h5 class="col-auto">{{ristorante.servizi[0].nome}}</h5>

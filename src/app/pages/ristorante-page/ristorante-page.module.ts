@@ -22,6 +22,10 @@ import {
 } from '../../components/ristorante-prenotazione-prenota/ristorante-prenotazione-prenota.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {SplitServiziQuattroColonnePipe} from "../../pipes/split-servizi-quatro-colonne.pipe";
+import {
+  SharedRistoranteCardComponentModule
+} from "../../components/shared-ristorante-card-component/shared-ristorante-card-component.module";
 
 const routes: Routes = [
   {
@@ -34,26 +38,28 @@ const routes: Routes = [
   declarations: [
     RistorantePageComponent,
     RistorantePrenotazioneVerificaComponent,
-    RistorantePrenotazionePrenotaComponent
+    RistorantePrenotazionePrenotaComponent,
+    SplitServiziQuattroColonnePipe
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        MatButtonModule,
-        MatDividerModule,
-        MatListModule,
-        MatIconModule,
-        MatExpansionModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        ReactiveFormsModule,
-        TranslateModule,
-        MatProgressSpinnerModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MatButtonModule,
+    MatDividerModule,
+    MatListModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    MatProgressSpinnerModule,
+    SharedRistoranteCardComponentModule
+  ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
   ]

@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {Ristorante} from "../../model/ristorante";
-import {Recensione} from "../../model/recensione";
 import {URL_BASE_IMG} from "../../constants";
 
 @Component({
@@ -10,26 +9,9 @@ import {URL_BASE_IMG} from "../../constants";
 })
 export class RistoranteCardComponent {
 
-  URL_BASE_IMG = URL_BASE_IMG;
+  urlImmagine = URL_BASE_IMG;
 
   @Input()
   ristorante?: Ristorante;
-
-  getAverage(rec: Recensione[] | null): string {
-    if(rec == null){
-      return "0.0";
-    }
-    if(rec.length>0){
-      const voti = rec.map(x=>x.voto);
-      const initialValue = 0;
-      const sumWithInitial = voti.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        initialValue
-      );
-      const result = (sumWithInitial / voti.length).toPrecision(2);
-      return String(result);
-    }
-    return "0.0";
-  }
 
 }

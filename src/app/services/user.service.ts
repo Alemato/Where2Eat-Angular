@@ -28,16 +28,17 @@ export class UserService {
   constructor(private http: HttpClient
   ) {
     let token: string | null = localStorage.getItem(AUTH_TOKEN);
-    if (token !== null && token !== undefined && token !== '') {
-      this.authToken = token;
-      console.log('this.authToken');
-      console.log(this.authToken);
-    }
     let utente: string | null = localStorage.getItem(UTENTE_STORAGE);
-    if (utente !== null && utente !== undefined && utente !== '') {
+    if (utente !== null && utente !== undefined && utente !== '' && token !== null && token !== undefined && token !== '') {
       console.log('Utente');
       console.log(utente);
       this.user$.next(JSON.parse(utente));
+      console.log('this.authToken');
+      console.log(this.authToken);
+      this.authToken = token;
+    } else {
+      localStorage.removeItem(AUTH_TOKEN);
+      localStorage.removeItem(UTENTE_STORAGE);
     }
   }
 

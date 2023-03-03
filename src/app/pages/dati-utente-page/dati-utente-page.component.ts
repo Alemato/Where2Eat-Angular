@@ -42,6 +42,7 @@ export class DatiUtentePageComponent {
           console.error('Ristorante Page request error: ' + error.status);
           window.alert("Accesso negato");
           this.userService.logout();
+          this.router.navigate(["/login"]);
         }
         if (error.status === 500) {
           console.error('Ristorante Page request error: ' + error.status);

@@ -3,6 +3,8 @@ import {Prenotazione} from "../../model/prenotazione";
 import {PrenotazioneService} from "../../services/prenotazione.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {PageEvent} from "@angular/material/paginator";
+import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-prenotazioni-page',
@@ -23,7 +25,10 @@ export class PrenotazioniPageComponent {
   pageSizeOptions = [1, 5, 10];
   showFirstLastButtons = true;
 
-  constructor(private prenotazioniService: PrenotazioneService) {
+  constructor(private router: Router,
+              private prenotazioniService: PrenotazioneService,
+              private userService: UserService
+  ) {
     this.loading = true;
   }
 
@@ -49,11 +54,14 @@ export class PrenotazioniPageComponent {
         }
         if (error.status === 403) {
           console.error('Delete Prenotazione request error: ' + error.status);
-          window.alert("Errore server 403");
+          window.alert("Accesso negato");
+          this.userService.logout();
+          this.router.navigate(["/login"]);
         }
         if (error.status === 404) {
           console.error('Delete Prenotazione request error: ' + error.status);
           window.alert("Errore server 404");
+          this.router.navigate(["/404"]);
         }
         if (error.status === 500) {
           console.error('Delete Prenotazione request error: ' + error.status);

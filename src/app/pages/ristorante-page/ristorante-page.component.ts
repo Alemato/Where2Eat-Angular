@@ -10,6 +10,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {Recensione} from "../../model/recensione";
 import {ServiziMetodiPagamentoTipologiaCucina} from "../../model/servizi-metodi-pagamento-tipologia-cucina";
 import {URL_BASE_IMG} from "../../constants";
+import {UserService} from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-ristorante-page',
@@ -22,17 +23,18 @@ export class RistorantePageComponent implements OnInit {
   URL_BASE_IMG = URL_BASE_IMG;
   loading: boolean;
 
-  constructor(private router: ActivatedRoute,
-              private route: Router,
+  constructor(private route: ActivatedRoute,
+              private router: Router,
               private dialog: MatDialog,
-              private ristoranteService: RistoranteService
+              private ristoranteService: RistoranteService,
+              private userService: UserService
   ) {
     this.loading = true;
     console.log("Creo Componente pagina Ristorante");
   }
 
   ngOnInit(): void {
-    this.router.paramMap.subscribe((params: ParamMap) => {
+    this.route.paramMap.subscribe((params: ParamMap) => {
       this.idRistorante = parseInt(params.get('id')!, 0);
       this.ristoranteService.getRistoranteByIdRistorante(this.idRistorante).subscribe({
         next: (data) => {
@@ -40,9 +42,15 @@ export class RistorantePageComponent implements OnInit {
           this.loading = false;
         }, error: (error: HttpErrorResponse) => {
           this.loading = false;
+          if (error.status === 403) {
+            console.error('Ristorante Page request error: ' + error.status);
+            window.alert("Accesso negato");
+            this.userService.logout();
+            this.router.navigate(["/login"]);
+          }
           if (error.status === 404) {
             console.error('Ristorante Page request error: ' + error.status);
-            this.route.navigate(["/404"]);
+            this.router.navigate(["/404"]);
           }
           if (error.status === 500) {
             console.error('Ristorante Page request error: ' + error.status);

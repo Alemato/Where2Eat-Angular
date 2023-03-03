@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Ricerca} from "../../components/ricerca-ristorante-modal/ricerca-ristorante-modal.component";
 import {map, Observable} from "rxjs";
 import {RistoranteService} from 'src/app/services/ristorante.service';
 import {Ristorante} from "../../model/ristorante";
 import {HttpErrorResponse} from "@angular/common/http";
 import {PageEvent} from "@angular/material/paginator";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-ricerca-ristoranti-page',
@@ -27,7 +28,9 @@ export class RicercaRistorantiPageComponent implements OnInit {
   showFirstLastButtons = true;
 
   constructor(private route: ActivatedRoute,
-              private ristoranteService: RistoranteService) {
+              private router: Router,
+              private ristoranteService: RistoranteService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -43,8 +46,14 @@ export class RicercaRistorantiPageComponent implements OnInit {
           this.loading = false;
         },
         error: (error: HttpErrorResponse) => {
+          if (error.status === 403) {
+            console.error('Ricerca Ristoranti Page request error: ' + error.status);
+            window.alert("Accesso negato");
+            this.userService.logout();
+            this.router.navigate(["/login"]);
+          }
           if (error.status === 500) {
-            console.error('Ristorante Page request error: ' + error.status);
+            console.error('Ricerca Ristoranti Page request error: ' + error.status);
             window.alert("Errore server 500");
             this.loading = false;
           }

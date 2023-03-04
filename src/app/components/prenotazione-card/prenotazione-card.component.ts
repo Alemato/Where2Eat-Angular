@@ -32,7 +32,7 @@ export class PrenotazioneCardComponent {
       exitAnimationDuration: '300ms',
       data: {idPrenotazione: this.prenotazione?.id}
     });
-
+    // Non è necessario fare unsubscribe su afterClosed (scritto sulle docs)
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.deletePrenotazioneEvent.emit(this.prenotazione);

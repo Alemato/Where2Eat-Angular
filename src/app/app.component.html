@@ -40,17 +40,17 @@
       <p class="px-3 pt-3">Menù</p>
 
       <mat-nav-list>
-        <mat-list-item routerLink="/home" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'"
+        <mat-list-item routerLink="home" routerLinkActive="mdc-list-item--activated" [ariaCurrentWhenActive]="'page'"
                        (click)="drawer.toggle();">
           <mat-icon matListItemIcon>home</mat-icon>
           <div matListItemTitle>Home</div>
         </mat-list-item>
-        <mat-list-item [routerLink]="['/prenotazioni']" routerLinkActive="mdc-list-item--activated"
+        <mat-list-item routerLink="prenotazioni" routerLinkActive="mdc-list-item--activated"
                        [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>note_add</mat-icon>
           <div matListItemTitle>{{"PRENOTAZIONI" | translate}}</div>
         </mat-list-item>
-        <mat-list-item [routerLink]="['/datiutente']" routerLinkActive="mdc-list-item--activated"
+        <mat-list-item routerLink="datiutente" routerLinkActive="mdc-list-item--activated"
                        [ariaCurrentWhenActive]="'page'" (click)="drawer.toggle();">
           <mat-icon matListItemIcon>supervisor_account</mat-icon>
           <div matListItemTitle>{{"DATI_UTENTE" | translate}}</div>

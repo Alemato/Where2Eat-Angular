@@ -10,14 +10,10 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
-import {MatLineModule} from "@angular/material/core";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {httpInterceptorProviders} from "./interceptors";
-import {MatDividerModule} from "@angular/material/divider";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -52,12 +48,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    //MatDividerModule,
     MatListModule,
-    //MatLineModule,
     MatButtonToggleModule,
-    //MatProgressSpinnerModule,
-    //MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
     MatFormFieldModule,

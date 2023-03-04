@@ -4,6 +4,7 @@ import {Ristorante} from "../model/ristorante";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {URL} from "../constants";
 import {Ricerca} from "../components/ricerca-ristorante-modal/ricerca-ristorante-modal.component";
+import {formatDate} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class RistoranteService {
   }
 
   getOrari(id: number, data: string): Observable<string[]> {
-    return this.http.get<string[]>(URL.RISTORANTE_ID + id + "/orari", {params: {'data': data}}).pipe(retry(3), catchError(this.handleError));
+    return this.http.get<string[]>(URL.RISTORANTE_ID + id + "/orari", {params: {'data': formatDate(data, 'dd/MM/yyyy', "en-GB")}}).pipe(retry(3), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

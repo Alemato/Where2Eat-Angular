@@ -72,6 +72,7 @@ export class PrenotazioniPageComponent {
 
   deleteEvHandler(prenotazione: Prenotazione) {
     console.log(prenotazione.id);
+    this.loading = true;
     this.prenotazioniService.cancelPrenotazione(prenotazione).subscribe({
       next: (data) => {
         const objWithIdIndex = this.prenotazioniFuture?.findIndex((obj) => obj.id === prenotazione.id);

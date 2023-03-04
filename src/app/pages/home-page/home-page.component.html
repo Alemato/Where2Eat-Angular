@@ -5,10 +5,3 @@
   <h2 class="my-3">{{"PIU_SCELTI_IN_ITALIA" | translate}}</h2>
   <app-ristorante-card *ngFor="let ristorante of ristornati;" [ristorante]="ristorante"></app-ristorante-card>
 </div>
-<div *ngIf="ristornati">
-  <div class="mt-5">
-    <mat-divider></mat-divider>
-  </div>
-  <h2 class="my-3">{{"RISTORANTI_PIU_RICHIESTI" | translate}}</h2>
-  <app-ristorante-card *ngFor="let ristorante of ristornati;" [ristorante]="ristorante"></app-ristorante-card>
-</div>

@@ -81,7 +81,6 @@ export class LoginPageComponent implements OnInit {
   onLogin() {
     if (this.loginFormModel.status === 'VALID') {
       const account: Account = this.loginFormModel.value;
-      console.log(account);
       this.userService.login(account).subscribe({
         next: (data) =>
         {

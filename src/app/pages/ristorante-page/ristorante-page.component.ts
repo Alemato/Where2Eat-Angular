@@ -28,7 +28,6 @@ export class RistorantePageComponent implements OnInit {
               private userService: UserService
   ) {
     this.loading = true;
-    console.log("Creo Componente pagina Ristorante");
   }
 
   ngOnInit(): void {

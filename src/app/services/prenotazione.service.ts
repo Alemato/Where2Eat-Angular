@@ -37,7 +37,7 @@ export class PrenotazioneService {
     return this.http.post<any>(URL.RISTORANTE + "/" + idRistorante + URL.VERIFICA_PRENOTAZIONE, verificaPrenotazione, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response verify prenotazione');
-        console.log(resp.body)
+        console.log(resp);
         return resp.body;
       }), retry(3), catchError(this.handleError));
   }
@@ -52,7 +52,7 @@ export class PrenotazioneService {
     return this.http.post<any>(URL.PRENOTAZIONI_CLIENTE, verificaPrenotazione, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response create prenotazione');
-        console.log(resp.body)
+        console.log(resp)
       }), retry(3), catchError(this.handleError));
   }
 

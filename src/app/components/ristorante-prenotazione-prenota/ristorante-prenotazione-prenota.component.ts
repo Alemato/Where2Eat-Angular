@@ -21,12 +21,10 @@ export class RistorantePrenotazionePrenotaComponent {
   }
 
   onNoClick(): void {
-    console.log("Annullato");
     this.dialogRef.close();
   }
 
   onSiClick() {
-    console.log("Prenotato");
     this.prenotazioneService.creaPrenotazione(this.data.idRistorante, this.data.data, this.data.ora, this.data.numeroPosti).subscribe({
       next: (data) => {
         this.dialogRef.close();

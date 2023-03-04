@@ -71,7 +71,6 @@ export class PrenotazioniPageComponent {
   }
 
   deleteEvHandler(prenotazione: Prenotazione) {
-    console.log(prenotazione.id);
     this.loading = true;
     this.prenotazioniService.cancelPrenotazione(prenotazione).subscribe({
       next: (data) => {
@@ -100,7 +99,6 @@ export class PrenotazioniPageComponent {
   }
 
   getPaginator(event: PageEvent) {
-    console.log(event);
     if (event.pageSize != this.pageSize) {
       this.pageSize = event.pageSize;
       this.highValue = event.pageSize;

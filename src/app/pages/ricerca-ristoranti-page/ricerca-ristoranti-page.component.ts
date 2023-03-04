@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {Ricerca} from "../../components/ricerca-ristorante-modal/ricerca-ristorante-modal.component";
-import {map, Observable} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 import {RistoranteService} from 'src/app/services/ristorante.service';
 import {Ristorante} from "../../model/ristorante";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -15,8 +13,6 @@ import {UserService} from "../../services/user.service";
 })
 export class RicercaRistorantiPageComponent implements OnInit {
   loading = true;
-
-  ricerca$: Observable<Ricerca> = new Observable<Ricerca>();
 
   ristoranti?: Ristorante[];
 
@@ -34,12 +30,8 @@ export class RicercaRistorantiPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ricerca$ = this.route.queryParamMap.pipe(
-      map((params: ParamMap) => {
-        return {cosa: params.get("cosa"), dove: params.get("dove")};
-      }));
-    this.ricerca$.subscribe(ric => {
-      console.log(ric);
+    this.route.queryParamMap.subscribe(params => {
+      const ric = {cosa: params.get("cosa"), dove: params.get("dove")};
       this.ristoranteService.getRicercaRistorantiByRicerca(ric).subscribe({
         next: (data) => {
           this.ristoranti = data;
@@ -63,7 +55,6 @@ export class RicercaRistorantiPageComponent implements OnInit {
   }
 
   getPaginatorData(event: PageEvent) {
-    console.log(event);
     if (event.pageSize != this.pageSize) {
       this.pageSize = event.pageSize;
       this.highValue = event.pageSize;

@@ -7,31 +7,30 @@ export interface Lingua {
 
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class LinguaService {
-  italiano: Lingua = {etichetta: 'Italiano', valore: 'it'};
-  lingue: Lingua[] = [this.italiano, {etichetta: 'English', valore: 'en'}];
+  italiano: Lingua = {etichetta: 'ITALIAN', valore: 'it'};
+  lingue: Lingua[] = [this.italiano, {etichetta: 'ENGLISH', valore: 'en'}];
 
   constructor() {
     let linguaStr: string | null = localStorage.getItem(LINGUA);
     if (linguaStr == null || linguaStr == '') {
-      localStorage.setItem(LINGUA, "it");
+      localStorage.setItem(LINGUA, this.getLinguaPredefinita());
     }
   }
 
   getLinguaAttuale(): string {
     let linguaStr: string | null = localStorage.getItem(LINGUA);
     if (linguaStr == null || linguaStr == '') {
-      localStorage.setItem(LINGUA, "it");
-      return "it";
+      localStorage.setItem(LINGUA, this.getLinguaPredefinita());
+      return this.getLinguaPredefinita();
     }
     return linguaStr;
   }
 
-  getLinguaPreferita(): string {
+  getLinguaPredefinita(): string {
     return this.italiano.valore;
   }
 

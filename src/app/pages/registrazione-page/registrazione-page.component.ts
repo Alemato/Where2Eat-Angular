@@ -41,8 +41,6 @@ export class RegistrazionePageComponent {
   salvaDati(): void {
     if (this.registrazioneForm?.status === 'VALID') {
       const newUser: NewUser = this.registrazioneForm.value;
-      console.log("newUser");
-      console.log(newUser);
       this.userService.registration(newUser).subscribe({
         next: (data) => {
           this.router.navigate(['/login']);

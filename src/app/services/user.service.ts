@@ -133,7 +133,7 @@ export class UserService {
     return this.http.patch<any>(URL.ACCOUNT, user, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response modifica utente');
-        console.log(resp)
+        console.log(resp);
       }), retry(3), catchError(this.handleError));
   }
 
@@ -141,7 +141,7 @@ export class UserService {
     return this.http.post<any>(URL.ACCOUNT, newUser, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response registrazione utente');
-        console.log(resp)
+        console.log(resp);
       }), retry(3), catchError(this.handleError));
   }
 

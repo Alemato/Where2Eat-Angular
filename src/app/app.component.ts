@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
-import {LinguaService} from "./services/lingua.service";
+import {Lingua, LinguaService} from "./services/lingua.service";
 import {UserService} from './services/user.service';
 import {Observable} from "rxjs";
 import {Router} from '@angular/router';
@@ -20,6 +20,7 @@ import {
 export class AppComponent {
   title = 'Where2Eat';
   linguaScelta = 'it';
+  lingueDisponibili: Lingua[];
   user$: Observable<User>;
   searchFormModel: FormGroup;
 
@@ -35,6 +36,7 @@ export class AppComponent {
       cosa: ['', []],
       dove: ['', []]
     });
+    this.lingueDisponibili = this.linguaService.getLingue();
   }
 
 
@@ -44,13 +46,12 @@ export class AppComponent {
   }
 
   changeLingua() {
-    console.log("Cambio")
-    if (this.linguaScelta === 'it') {
+    if (this.linguaScelta === this.linguaService.getLinguaPredefinita()) {
       this.linguaService.updateLingua('en');
       this.linguaScelta = 'en'
     } else {
-      this.linguaService.updateLingua('it');
-      this.linguaScelta = 'it';
+      this.linguaService.updateLingua(this.linguaService.getLinguaPredefinita());
+      this.linguaScelta = this.linguaService.getLinguaPredefinita();
     }
     this.translate.setDefaultLang(this.linguaScelta);
   }

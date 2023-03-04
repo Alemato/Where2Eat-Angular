@@ -20,11 +20,13 @@
           <mat-label>{{"DOVE" | translate}}</mat-label>
           <input id="dove" type="text" matInput placeholder="{{'PLACEHOLDER_DOVE' | translate}}" formControlName="dove">
         </mat-form-field>
-        <button  type="submit" class="btn btn-lg btn-light" style="margin-top: -15px;">{{"RICERCA_RISTORANTE" | translate}}</button>
+        <button type="submit" class="btn btn-lg btn-light"
+                style="margin-top: -15px;">{{"RICERCA_RISTORANTE" | translate}}</button>
       </form>
     </div>
     <div class="ms-3 d-flex d-md-none">
-      <button mat-raised-button type="button" (click)="openDialogRicerca()">{{"RICERCA_RISTORANTE" | translate}}</button>
+      <button mat-raised-button type="button"
+              (click)="openDialogRicerca()">{{"RICERCA_RISTORANTE" | translate}}</button>
     </div>
   </mat-toolbar>
 
@@ -60,10 +62,9 @@
       <p class="px-3 fs-5 mt-5">
         {{"LANGUAGE" | translate}}:
         <mat-button-toggle-group name="lingua" aria-label="Font Style" (change)="changeLingua()" class="w-100 mt-2">
-          <mat-button-toggle value="it" [checked]="linguaScelta=='it'"
-                             class="col">{{"ITALIAN" | translate}}</mat-button-toggle>
-          <mat-button-toggle value="en" [checked]="linguaScelta=='en'"
-                             class="col">{{"ENGLISH" | translate}}</mat-button-toggle>
+          <mat-button-toggle *ngFor="let lingua of lingueDisponibili" [value]="lingua.valore"
+                             [checked]="linguaScelta==lingua.valore"
+                             class="col">{{lingua.etichetta | translate}}</mat-button-toggle>
         </mat-button-toggle-group>
       </p>
       <p class="px-3 fs-5 mt-5">

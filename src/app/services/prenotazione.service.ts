@@ -20,7 +20,7 @@ export class PrenotazioneService {
 
   cancelPrenotazione(prenotazione: Prenotazione): Observable<any> {
     const modPrenotazione = {id: prenotazione.id, stato: 3}
-    return this.http.patch<any>(URL.RISTORANTE + "/" + prenotazione.ristorante.id + "/prenotazioni", modPrenotazione,
+    return this.http.patch<any>(URL.RISTORANTE + "/" + prenotazione.ristorante.id + URL.PRENOTAZIONI, modPrenotazione,
       {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response cancel prenotazione');
@@ -34,7 +34,7 @@ export class PrenotazioneService {
       "ora": ora,
       "numeroPosti": numeroPosti
     };
-    return this.http.post<any>(URL.RISTORANTE + "/" + idRistorante + "/prenotazioni/verifica", verificaPrenotazione, {observe: 'response'}).pipe(
+    return this.http.post<any>(URL.RISTORANTE + "/" + idRistorante + URL.VERIFICA_PRENOTAZIONE, verificaPrenotazione, {observe: 'response'}).pipe(
       map((resp: HttpResponse<any>) => {
         console.log('response verify prenotazione');
         console.log(resp.body)

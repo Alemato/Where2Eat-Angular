@@ -38,7 +38,7 @@ export class RistoranteService {
   }
 
   getOrari(id: number, data: string): Observable<string[]> {
-    return this.http.get<string[]>(URL.RISTORANTE_ID + id + "/orari", {params: {'data': formatDate(data, 'dd/MM/yyyy', "en-GB")}}).pipe(retry(3), catchError(this.handleError));
+    return this.http.get<string[]>(URL.RISTORANTE_ID + id + URL.ORARI, {params: {'data': formatDate(data, 'dd/MM/yyyy', "en-GB")}}).pipe(retry(3), catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

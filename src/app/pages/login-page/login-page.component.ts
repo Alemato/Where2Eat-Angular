@@ -23,8 +23,6 @@ export class LoginPageComponent implements OnInit {
       username: ['', [
         Validators.required,
         Validators.minLength(6),
-        // tslint:disable-next-line:max-line-length
-        //Validators.pattern('(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
       ]],
       password: ['', [

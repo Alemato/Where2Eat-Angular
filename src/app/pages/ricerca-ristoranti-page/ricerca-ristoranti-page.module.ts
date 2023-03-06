@@ -8,7 +8,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {
   SharedRistoranteCardComponentModule
-} from "../../components/shared-ristorante-card-component/shared-ristorante-card-component.module";
+} from "../../components/shared-ristorante-card/shared-ristorante-card-component.module";
 
 const routes: Routes = [{path: '', component: RicercaRistorantiPageComponent}];
 

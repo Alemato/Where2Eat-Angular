@@ -25,7 +25,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {SplitServiziQuattroColonnePipe} from "../../pipes/split-servizi-quatro-colonne.pipe";
 import {
   SharedRistoranteCardComponentModule
-} from "../../components/shared-ristorante-card-component/shared-ristorante-card-component.module";
+} from "../../components/shared-ristorante-card/shared-ristorante-card-component.module";
 
 const routes: Routes = [
   {

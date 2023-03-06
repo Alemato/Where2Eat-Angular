@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'restrazione',
+    path: 'registrazione',
     loadChildren: () => import('./pages/registrazione-page/registrazione-page.module').then(m => m.RegistrazionePageModule),
     canActivate: [LoginGuard]
   },

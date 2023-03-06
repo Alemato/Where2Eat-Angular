@@ -65,9 +65,6 @@ export class RistorantePageComponent implements OnInit {
     const dialogRef = this.dialog.open(RistorantePrenotazioneVerificaComponent, {
       data: {idRistorante: this.idRistorante}
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 
 }

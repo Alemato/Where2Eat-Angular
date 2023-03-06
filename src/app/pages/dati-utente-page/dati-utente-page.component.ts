@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user";
 import {UserService} from "../../services/user.service";
@@ -11,7 +11,7 @@ import {TranslateService} from "@ngx-translate/core";
   templateUrl: './dati-utente-page.component.html',
   styleUrls: ['./dati-utente-page.component.css']
 })
-export class DatiUtentePageComponent {
+export class DatiUtentePageComponent implements OnInit {
 
   utenteForm: FormGroup;
   user?: User;
@@ -30,7 +30,7 @@ export class DatiUtentePageComponent {
       });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initTranslate();
     this.userService.getUserFromServer().subscribe({
       next: user => {

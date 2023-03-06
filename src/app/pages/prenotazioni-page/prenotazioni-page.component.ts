@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Prenotazione} from "../../model/prenotazione";
 import {PrenotazioneService} from "../../services/prenotazione.service";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -11,7 +11,7 @@ import {UserService} from "../../services/user.service";
   templateUrl: './prenotazioni-page.component.html',
   styleUrls: ['./prenotazioni-page.component.css']
 })
-export class PrenotazioniPageComponent {
+export class PrenotazioniPageComponent implements OnInit {
 
   prenotazioni?: Array<Prenotazione>;
   prenotazioniFuture: Array<Prenotazione> = [];

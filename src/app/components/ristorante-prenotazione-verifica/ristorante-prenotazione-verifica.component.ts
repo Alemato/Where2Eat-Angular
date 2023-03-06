@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Prenotazione} from "../../model/prenotazione";
@@ -18,7 +18,7 @@ import {LinguaService} from "../../services/lingua.service";
   templateUrl: './ristorante-prenotazione-verifica.component.html',
   styleUrls: ['./ristorante-prenotazione-verifica.component.css']
 })
-export class RistorantePrenotazioneVerificaComponent {
+export class RistorantePrenotazioneVerificaComponent implements OnInit {
 
   verificaForm: FormGroup;
   prenotazione?: Prenotazione;
@@ -46,7 +46,7 @@ export class RistorantePrenotazioneVerificaComponent {
     });
   }
 
-  onOnInit(): void {
+  ngOnInit(): void {
     this.initTranslate();
   }
 

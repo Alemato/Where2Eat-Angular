@@ -13,7 +13,6 @@ import {Router} from "@angular/router";
 export class LoginPageComponent implements OnInit {
   loginFormModel: FormGroup;
   showPassword: boolean = false;
-  showErrorAuth: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
